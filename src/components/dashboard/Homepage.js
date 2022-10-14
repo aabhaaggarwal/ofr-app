@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link} from 'react-router-dom'
+import axios from "axios";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 import img1 from "../assets/flat2.jpg"
 import img2 from "../assets/5.jpg"
 import img3 from "../assets/3.jpeg"
 import img4 from "../assets/4.jpg"
 import img5 from "../assets/card1.jpg"
-import img6 from "../assets/card3.jpg"
-import img7 from "../assets/card22222.jpg"
 import Navbar from "../headerfooter/Navbar";
 import NavbarTenant from "../headerfooter/NavbarTenant";
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
 
 
 function Homepage() {
+    const [flats, setFlats] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/flat/search").then(resp => setFlats(resp.data));
+    }, []);
 
    
     const navbar=()=>{
@@ -65,7 +70,7 @@ function Homepage() {
                     <div class="row justify-content-center ">
                         <div>
                             <div>
-                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="3000">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active h-25">
                                             <img src={img1} class="d-block  " alt="..." style={{height:"460px"}}
@@ -171,36 +176,28 @@ function Homepage() {
                         </div>
                     </div><br></br><br></br>
                     <div class="p-5">
-                        <h2>Recently Added</h2><br></br><br></br>
-                        <div class="card-deck">
-                            <div class="card" id="card1">
-                                <img class="card-img-top" src={img5} alt="Card image cap" />
-                                <div class="card-body">
-                                    <h5 class="card-title">2-BHK</h5>
-                                    <p class="card-text">Price:40000</p>
-                                    <p class="card-text"><small class="text-muted">HN-115,Sant Nagar ,Amritsar,Punjab 143001</small></p>
-                                    <button class="btn btn-primary">More Details</button>
+                        {
+                            flats.length > 0 &&
+                            <div>
+                                <h2>Recently Added</h2><br></br><br></br>
+                                <div class="card-deck">
+                                    {
+                                         flats.slice(2).map(f => 
+                                                <div class="card" >
+                                                    <img class="card-img-top" src={img5} alt="Card image cap" />
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">{f.flatType}</h5>
+                                                        <p class="card-text">Price: {f.cost}</p>
+                                                        <p class="card-text"><small class="text-muted">{f.flatAddress.street},{f.flatAddress.city},{f.flatAddress.state}, {f.flatAddress.country}</small></p>
+                                                        <Link to={`/flat/details/${f.flatId}`} className="btn btn-primary">More Details</Link>
+                                                    </div>
+                                                </div>
+                                        )
+                                    }
                                 </div>
                             </div>
-                            <div class="card" id="card2">
-                                <img class="card-img-top" src={img6} alt="Card image cap" />
-                                <div class="card-body">
-                                    <h5 class="card-title">3-BHK</h5>
-                                    <p class="card-text">Price:40000</p>
-                                    <p class="card-text"><small class="text-muted">HN-115,Sant Nagar ,Amritsar,Punjab 143001</small></p>
-                                    <button class="btn btn-primary">More Details</button>
-                                </div>
-                            </div>
-                            <div class="card" id="card3">
-                                <img class="card-img-top" src={img7} alt="Card image cap" />
-                                <div class="card-body">
-                                    <h5 class="card-title">4-BHK</h5>
-                                    <p class="card-text">Price:40000</p>
-                                    <p class="card-text"><small class="text-muted">HN-115,Sant Nagar ,Amritsar,Punjab 143001</small></p>
-                                    <button class="btn btn-primary">More Details</button>
-                                </div>
-                            </div>
-                        </div>
+                        }
+
                     </div>
                 </section>
                 <footer>
