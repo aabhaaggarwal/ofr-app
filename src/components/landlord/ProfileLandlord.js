@@ -8,6 +8,8 @@ function ProfileLandlord() {
     const [landlord, setLandlord] = useState(null);
     const { id } = useParams();
 
+    //profile created
+
     useEffect(() => {
         axios.get("http://localhost:8080/landlord/" + id).then(resp => setLandlord(resp.data));
     }, [id]);
