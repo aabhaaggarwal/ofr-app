@@ -37,7 +37,7 @@ function AddUser() {
             errors['lRoleError'] = "Role is required."
         }
         if (!lGender) {
-            errors['lGenderError'] = "Role is required."
+            errors['lGenderError'] = "Gender is required."
         }
         if (!lEmail) {
             errors['lEmailError'] = "Email is required."
@@ -130,103 +130,105 @@ function AddUser() {
                         <h2 class="text-center">Logo</h2>
                         <p class="text-center font-weight-bold text-black-50" style={{ fontSize: "x-large" }}>Create a new
                             account</p>
-                        <form>
-                            <div class="form-group">
 
-                                <input type="text" className="form-control" name="lUserName" id="lUserName" placeholder="Create username"
-                                    onChange={(event) => setLUserName(event.target.value)} value={lUserName} />
-                                {
-                                    formErrors.lUserNameError && <div style={{ color: "red" }}>{formErrors.lUserNameError}</div>
-                                }
-                            </div>
-                            <div class="form-group">
-                                <div className="row">
-                                    <div class="col">
+                        <div class="form-group">
 
-                                        <input type="text" className="form-control" name="lFirstName" id="lFirstName" placeholder="Enter your first name"
-                                            onChange={(event) => setLFirstName(event.target.value)} value={lFirstName} />
-                                        {
-                                            formErrors.lFirstNameError && <div style={{ color: "red" }}>{formErrors.lFirstNameError}</div>
-                                        }
-                                    </div>
-                                    <div class="col">
-
-                                        <input type="text" className="form-control" name="lLastName" id="lLastName" placeholder="Enter your last name"
-                                            onChange={(event) => setLLastName(event.target.value)} value={lLastName} />
-                                        {
-                                            formErrors.lLastNameError && <div style={{ color: "red" }}>{formErrors.lLastNameError}</div>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-
-                                <input type="text" className="form-control" name="lEmail" id="lEmail" placeholder="Enter your email"
-                                    onChange={(event) => setLEmail(event.target.value)} value={lEmail} />
-                                {
-                                    formErrors.lEmailError && <div style={{ color: "red" }}>{formErrors.lEmailError}</div>
-                                }
-                            </div>
-                            <div class="row form-group">
+                            <input type="text" className="form-control" name="lUserName" id="lUserName" placeholder="Create username"
+                                onChange={(event) => setLUserName(event.target.value)} value={lUserName} />
+                            {
+                                formErrors.lUserNameError && <div style={{ color: "red" }}>{formErrors.lUserNameError}</div>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <div className="row">
                                 <div class="col">
 
-                                    <input type="number"  className="form-control" name="lAge" id="lAge" placeholder="Enter your age"
-                                        onChange={(event) => setLAge(event.target.value)} value={lAge} />
+                                    <input type="text" className="form-control" name="lFirstName" id="lFirstName" placeholder="Enter your first name"
+                                        onChange={(event) => setLFirstName(event.target.value)} value={lFirstName} />
                                     {
-                                        formErrors.lAgeError && <div style={{ color: "red" }}>{formErrors.lAgeError}</div>
+                                        formErrors.lFirstNameError && <div style={{ color: "red" }}>{formErrors.lFirstNameError}</div>
                                     }
                                 </div>
                                 <div class="col">
-                                    <select class="form-control" id="gender"
-                                        onChange={(event) => setLGender(event.target.value)} value={lGender}>
-                                        {
-                                            formErrors.lGenderError && <div style={{ color: "red" }}>{formErrors.lGenderError}</div>
-                                        }
-                                        <option value="#">Gender</option>
-                                        <option value="male">Male</option>
-                                        <option vlaue="female">Female</option>
-                                        <option vlaue="others">Others</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
 
-                                <input type="tel" className="form-control" name="lMobile" id="lMobile" placeholder="Enter phone number"
-                                    onChange={(event) => setLMobile(event.target.value)} value={lMobile} />
-                                {
-                                    formErrors.lMobileError && <div style={{ color: "red" }}>{formErrors.lMobileError}</div>
-                                }
-                            </div>
-                            <div class="row form-group">
-                                <div class="col">
-
-                                    <input type="password" className="form-control" name="lPassword" id="lPassword" placeholder="Create password"
-                                        onChange={(event) => setLPassword(event.target.value)} value={lPassword} />
+                                    <input type="text" className="form-control" name="lLastName" id="lLastName" placeholder="Enter your last name"
+                                        onChange={(event) => setLLastName(event.target.value)} value={lLastName} />
                                     {
-                                        formErrors.lPasswordError && <div style={{ color: "red" }}>{formErrors.lPasswordError}</div>
+                                        formErrors.lLastNameError && <div style={{ color: "red" }}>{formErrors.lLastNameError}</div>
                                     }
                                 </div>
-                                <div class="col">
-                                    <select class="form-control" id="role"
-                                        onChange={(event) => setLRole(event.target.value)} value={lRole}>
-                                        {
-                                            formErrors.lRoleError && <div style={{ color: "red" }}>{formErrors.lRoleError}</div>
-                                        }
-                                        <option value="#">Select type of user</option>
-                                        <option value="landlord">Landlord</option>
-                                        <option value="tenant">Tenant</option>
-                                    </select>
-                                </div>
                             </div>
-                            <br></br>
-                            <div class="form-group">
-                                <button onClick={handleSubmit} className="btn btn-dark btn-block">Submit</button>
+                        </div>
+                        <div class="form-group">
+
+                            <input type="text" className="form-control" name="lEmail" id="lEmail" placeholder="Enter your email"
+                                onChange={(event) => setLEmail(event.target.value)} value={lEmail} />
+                            {
+                                formErrors.lEmailError && <div style={{ color: "red" }}>{formErrors.lEmailError}</div>
+                            }
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+
+                                <input type="number" className="form-control" name="lAge" id="lAge" placeholder="Enter your age"
+                                    onChange={(event) => setLAge(event.target.value)} value={lAge} />
+                                {
+                                    formErrors.lAgeError && <div style={{ color: "red" }}>{formErrors.lAgeError}</div>
+                                }
                             </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-link text-primary">Already Have an account? Login
-                                    Here</button>
+                            <div class="col">
+                                <select class="form-control" id="gender"
+                                    onChange={(event) => setLGender(event.target.value)} value={lGender}>
+
+                                    <option value="#">Gender</option>
+                                    <option value="male">Male</option>
+                                    <option vlaue="female">Female</option>
+                                    <option vlaue="others">Others</option>
+                                </select>
+                                {
+                                    formErrors.lGenderError && <div style={{ color: "red" }}>{formErrors.lGenderError}</div>
+                                }
                             </div>
-                        </form>
+                        </div>
+                        <div class="form-group">
+
+                            <input type="tel" className="form-control" name="lMobile" id="lMobile" placeholder="Enter phone number"
+                                onChange={(event) => setLMobile(event.target.value)} value={lMobile} />
+                            {
+                                formErrors.lMobileError && <div style={{ color: "red" }}>{formErrors.lMobileError}</div>
+                            }
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+
+                                <input type="password" className="form-control" name="lPassword" id="lPassword" placeholder="Create password"
+                                    onChange={(event) => setLPassword(event.target.value)} value={lPassword} />
+                                {
+                                    formErrors.lPasswordError && <div style={{ color: "red" }}>{formErrors.lPasswordError}</div>
+                                }
+                            </div>
+                            <div class="col">
+                                <select class="form-control" id="role"
+                                    onChange={(event) => setLRole(event.target.value)} value={lRole}>
+
+                                    <option value="#">Select type of user</option>
+                                    <option value="landlord">Landlord</option>
+                                    <option value="tenant">Tenant</option>
+                                </select>
+                                {
+                                    formErrors.lRoleError && <div style={{ color: "red" }}>{formErrors.lRoleError}</div>
+                                }
+                            </div>
+                        </div>
+                        <br></br>
+                        <div class="form-group">
+                            <button onClick={handleSubmit} className="btn btn-dark btn-block">Submit</button>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-link text-primary">Already Have an account? Login
+                                Here</button>
+                        </div>
+
                     </div>
                 </div>
             </div>

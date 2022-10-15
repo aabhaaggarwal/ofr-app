@@ -14,12 +14,12 @@ function DeleteLandlord() {
 
     const handleDelete = () => {
         axios.delete("http://localhost:8080/landlord/" + id).then(resp => {
-            alert("Landlord deleted with id: "+id);
+            alert("Landlord deleted with id: " + id);
             navigate("/landlord/all");
         });
     }
     return (
-        <div class="page-content page-container">
+        <div class="page-content page-container m-4">
             <div class="padding">
                 <div class="container rounded">
                     <div class="card border-warning d-flex flex-row">
@@ -112,12 +112,16 @@ function DeleteLandlord() {
                                                 <p>{landlord.password}</p>
                                             </div>
                                         </div>
-                                        <div>
-                                            <button onClick={handleDelete} className="btn btn-danger">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
-                                            
-                                            <a href="#">
-                                            <button className="btn btn-secondary ">Back <i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-                                            </a>
+                                        <div className="row">
+                                            <div className="col">
+                                                <button onClick={handleDelete} className="btn btn-danger">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                            </div>
+                                            <div className="col">
+                                                <a href="#">
+                                                    <button className="btn btn-secondary ">Back <i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                                                </a>
+
+                                            </div>
                                         </div>
                                     </p>
                                 }
