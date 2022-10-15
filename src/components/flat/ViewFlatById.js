@@ -50,6 +50,10 @@ function ViewFlatById() {
                                             <p class="d-inline">{flat.landlord.firstName} {flat.landlord.lastName}</p>
                                         </div>
                                     </div>
+                                    <br></br>
+                                    <div>
+                                    <button className="btn btn-info">Request Booking</button>
+                                 </div>
                                    
                                 </p>
                             </div>
