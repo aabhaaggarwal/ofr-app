@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import login from '../../assets/login.jpg';
+import { Link, useNavigate } from 'react-router-dom';
+import login from '../assets/login.jpg';
+import Navbar from '../headerfooter/Navbar';
 function Login() {
 
     const [username, setUsername] = useState('');
@@ -23,10 +24,10 @@ function Login() {
                 // alert("New Customer");
                 localStorage.setItem('loginuser', JSON.stringify(resp.data));
                 if (payload.role == 'landlord') {
-                    navigate('/landlord/details/' + resp.data.userId);
+                    navigate('/');
                 }
                 if (payload.role == 'tenant') {
-                    navigate('/tenant/details/' + resp.data.userId);
+                    navigate('/');
                 }
             })
             .catch(error => {
@@ -37,6 +38,8 @@ function Login() {
 
     }
     return (
+        <div>
+        <Navbar/>
         <div className=' page-content page-container m-4 p-4'>
              <div class="padding">
              <div class="container rounded">
@@ -74,9 +77,10 @@ function Login() {
                         <button onClick={handleSubmit} className="btn btn-dark btn btn-block">Login</button>
                     </div>
                    
-                    <p class=" font-weight-bold text-black-50 btn btn-link" >Forgot password?</p>
+                    <Link to={"/forgetpassword"} class=" font-weight-bold text-black-50 btn btn-link" >Forgot password?</Link>
                     <br></br>
-                    <p class=" font-weight-bold text-black-50  btn btn-link" >Don't Have an Account? Sign In</p>
+                    <Link to={"/signup"} class=" font-weight-bold text-black-50  btn btn-link" >Don't Have an Account? Sign In</Link>
+                </div>
                 </div>
                 </div>
                 </div>

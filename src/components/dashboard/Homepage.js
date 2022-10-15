@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link} from 'react-router-dom'
 import axios from "axios";
-// import "bootstrap-icons/font/bootstrap-icons.css";
+//import "bootstrap-icons/font/bootstrap-icons.css";
 import img1 from "../assets/flat2.jpg"
 import img2 from "../assets/5.jpg"
 import img3 from "../assets/3.jpeg"
@@ -10,7 +10,6 @@ import img5 from "../assets/card1.jpg"
 import Navbar from "../headerfooter/Navbar";
 import NavbarTenant from "../headerfooter/NavbarTenant";
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
-
 
 function Homepage() {
     const [flats, setFlats] = useState([]);

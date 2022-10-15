@@ -3,10 +3,11 @@ import {Link} from 'react-router-dom';
 
 
 function NavbarLandlord(){
+    const user=JSON.parse(localStorage.getItem("loginuser"));
     return(
         <div class="container-fluid">
         <nav class="navbar navbar-expand-md bg-dark text-white navbar-dark fixed-top">
-            <a class="navbar-brand" href="#">Flat365</a>
+            <Link to={"/"} class="navbar-brand">Flat365</Link>
 
            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -26,8 +27,8 @@ function NavbarLandlord(){
                             Profile
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <Link class="dropdown-item bg-light" to="/landlord/details/:id">My Profile</Link>
-                            <Link class="dropdown-item bg-light" to="">Pending Approvals</Link>
+                            <Link class="dropdown-item bg-light" to={`/landlord/details/${user.userId}`}>My Profile</Link>
+                            <Link class="dropdown-item bg-light" to={"/flatbooking/approval/landlord/all"}>Pending Approvals</Link>
                             <Link class="dropdown-item bg-light" to="/logout">Logout</Link>
                         </div>
                     </li>

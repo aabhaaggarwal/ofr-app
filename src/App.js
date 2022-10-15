@@ -31,6 +31,12 @@ import ViewFlatBookingApprovalLandlord from './components/flatbooking/ViewFlatBo
 import RequestBooking from './components/flatbooking/RequestBooking';
 import DeleteFlatBooking from './components/flatbooking/DeleteFlatBooking';
 import ForgetPassword from './components/authentication/ForgetPassword';
+import UpdateLandlord from './components/landlord/UpdateLandlord';
+import AdminProfile from './components/admin/AdminProfile';
+
+import UpdateAdmin from './components/admin/UpdateAdmin';
+
+import AddAdmin from './components/admin/AddAdmin';
 
 function App() {
   return (
@@ -62,6 +68,12 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
         <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
+        <Route path="/landlord/update/:id" element={<UpdateLandlord />}></Route>
+        <Route path='/admin/details/:id' element={<AdminProfile/>}></Route>
+
+        <Route path="/admin/update/:id" element={<UpdateAdmin />}></Route>
+
+        <Route path='/admin/add' element={<AddAdmin />}></Route>
       </Routes>
     </BrowserRouter>
   );

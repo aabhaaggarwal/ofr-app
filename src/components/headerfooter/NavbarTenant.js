@@ -8,7 +8,7 @@ function NavbarTenant(){
         <div class="container-fluid">
             {
         <nav class="navbar navbar-expand-md bg-dark text-white navbar-dark fixed-top">
-            <a class="navbar-brand" href="#">Flat365</a>
+            <Link to={"/"} class="navbar-brand">Flat365</Link>
 
         
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

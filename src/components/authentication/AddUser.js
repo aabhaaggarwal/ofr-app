@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import profile from '../assets/sign-up-concept-illustration_114360-7885.jpg';
 
 function AddUser() {
@@ -225,8 +225,8 @@ function AddUser() {
                             <button onClick={handleSubmit} className="btn btn-dark btn-block">Submit</button>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-link text-primary">Already Have an account? Login
-                                Here</button>
+                            <Link to={"/login"} class="btn btn-link text-primary">Already Have an account? Login
+                                Here</Link>
                         </div>
 
                     </div>

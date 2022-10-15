@@ -99,7 +99,7 @@ function FetchLandlord() {
                                 </div>
                                 <br></br>
                                 <div class="form-group">
-                                <Link to={"/landlord/update/:id"} className="btn btn-warning">Update <i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
+                                <Link to={`/landlord/update/${landlord.userId}`} className="btn btn-warning">Update <i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
                                 </div>
                             </p>
                         </div>
