@@ -26,6 +26,11 @@ import Navbar from './components/headerfooter/Navbar';
 import NavbarTenant from './components/headerfooter/NavbarTenant';
 import NavbarLandlord from './components/headerfooter/NavbarLandlord';
 import AddUser from './components/authentication/AddUser';
+import ApprovalFlatBookingLandlord from './components/flatbooking/ApprovalFlatBookingLandlord';
+import ViewFlatBookingApprovalLandlord from './components/flatbooking/ViewFlatBookingApprovalLandlord';
+import RequestBooking from './components/flatbooking/RequestBooking';
+import DeleteFlatBooking from './components/flatbooking/DeleteFlatBooking';
+import ForgetPassword from './components/authentication/ForgetPassword';
 
 function App() {
   return (
@@ -36,7 +41,11 @@ function App() {
         <Route path="/flatbooking/:id" element={<ViewByBookingNo />}></Route>
         <Route path="/flatbooking/tenant/:id" element={<ViewAllByTenant />}></Route>
         <Route path="/flatbooking/approval/all" element={<ApprovalFlatBooking />}></Route>
-        <Route path="/flatbooking/approval/:id" element={<ViewFlatBookingApproval />}></Route>
+        <Route path="/flatbooking/approval/landlord/all" element={<ApprovalFlatBookingLandlord />}></Route>
+        <Route path="/flatbooking/approval/:id" element={<ViewFlatBookingApproval />}></Route>,
+        <Route path="/flatbooking/approval/landlord/:id" element={<ViewFlatBookingApprovalLandlord />}></Route>
+        <Route path="/flatbooking/book/:id" element={<RequestBooking />}></Route>
+        <Route path="/flatbooking/delete/:id" element={<DeleteFlatBooking/>}></Route>
         <Route path="/landlord/all" element={<ViewAllLandlord />}></Route>
         <Route path="/landlord/details/:id" element={<ProfileLandlord />}></Route>
         <Route path="/landlord/delete/:id" element={<DeleteLandlord />}></Route>
@@ -52,6 +61,7 @@ function App() {
         <Route path="/tenant/delete/:id" element={<DeleteTenant />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
+        <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
       </Routes>
     </BrowserRouter>
   );

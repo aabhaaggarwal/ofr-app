@@ -14,59 +14,27 @@ import NavbarLandlord from "../headerfooter/NavbarLandlord";
 
 function Homepage() {
     const [flats, setFlats] = useState([]);
-
+    const user = JSON.parse(localStorage.getItem("loginuser"));
     useEffect(() => {
         axios.get("http://localhost:8080/flat/search").then(resp => setFlats(resp.data));
     }, []);
 
-   
-    const navbar=()=>{
-        const user= JSON.parse(localStorage.getItem("loginuser"));
-        const roleinput   = user.getElementById("role");
-        if(user==null){
-           return <Navbar/>;
-        }
-        if(user!==null){
-            if(roleinput=='tenant'){
-                return <NavbarTenant/> ;
-            }
-            if(roleinput=='landlord'){
-                return <NavbarLandlord/>;
-            }
-        }
-    
-    }
     return (
         <div>
             <div class="container-fluid">
                 <header>
-                    {navbar}
-                    {/* <nav class="navbar navbar-expand-md bg-dark text-white navbar-dark fixed-top">
-                        <a class="navbar-brand" href="#">Flat365</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link text-white bg-dark" href="#">My Bookings</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white bg-dark" href="#">Post your property</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-white bg-dark" href="#" id="navbardrop"
-                                        data-toggle="dropdown">
-                                        Login/Register
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item bg-light" href="#">For Tenant</a>
-                                        <a class="dropdown-item bg-light" href="#">For Landlord</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav> */}
+                    {
+                        user.role==='tenant' && <NavbarTenant/>
+
+                    }
+                     {
+                        user.role==='landlord' && <NavbarLandlord/>
+                        
+                    }
+                    {
+                        user===null && <Navbar/>
+                        
+                    }
                     <div class="row justify-content-center ">
                         <div>
                             <div>

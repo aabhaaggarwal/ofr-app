@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import flatimg  from '../assets/15400_Apartments_for_rent_in_Dubai_Marina_20151215122124.jpg';
 
 function ViewFlatById() {
@@ -52,7 +52,7 @@ function ViewFlatById() {
                                     </div>
                                     <br></br>
                                     <div>
-                                    <button className="btn btn-info">Request Booking</button>
+                                    <Link to={`/flatbooking/book/${flat.flatId}`} className="btn btn-info">Request Booking</Link>
                                  </div>
                                    
                                 </p>

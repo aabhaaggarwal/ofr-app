@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function ViewAllFlatBooking() {
     const [flatBookings,setFlatBookings] =useState([]);
@@ -10,35 +11,46 @@ function ViewAllFlatBooking() {
     },[]);
 
     return(
-        <div>
-        <h2 style={{color:"blue",textAlign:"center"}}>All Products</h2>
-        {
-        flatBookings.length>0 &&
-        <table>
-            <thead>
+<div class="container">
+        <div class="mb-3 mt-3">
+        <h4>Flat Bookings</h4>
+        </div>  
+        {  
+        flatBookings.length>0 &&     
+        <table class="table table-striped table-light shadow-lg">
+          <thead class="thead-dark">
             <tr>
-                <th>Booking no</th>
-                <th>Booking from</th>
-                <th>Booking to</th>
-                <th>members</th>
-                <th>cost</th>
+              <th>Booking No</th>
+              <th>Booking From</th>
+              <th>Booking To</th>
+              <th>Members</th>
+              <th>Status</th>
+              <th>FlatId</th>
+              <th>TenantId</th>
+              <th></th>
+              <th></th>
+              <th></th>
             </tr>
-            </thead>
-            <tbody>
+          </thead>
+          <tbody>
             {
             flatBookings.map(f => <tr key={f.bookingNo}>
-                <td>{f.bookingNo}</td>
+             <td>{f.bookingNo}</td>
                 <td> {f.bookingFrom}</td>
-                <td> {f.bookingTo}</td>
-                <td> {f.members}</td>
-                <td> {f.flat.cost}</td>
-                </tr>)
-        }
-        </tbody>
+                 <td> {f.bookingTo}</td>
+                 <td> {f.members}</td>
+                <td>{f.status}</td>
+                <td>{f.flat.flatId}</td>
+                <td>{f.tenant.userId}</td>
+                <td><Link to={`/flatbooking/${f.bookingNo}`}><i class="fa fa-eye" aria-hidden="true"></i></Link></td>
+                <td><Link to={`/flatbooking/update/${f.bookingNo}`}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link></td>
+                <td><Link to={`/flatbooking/delete/${f.bookingNo}`}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
+              </tr>)
+}
+          </tbody>
         </table>
 }
-
-    </div>
+      </div>
     )
 }
 

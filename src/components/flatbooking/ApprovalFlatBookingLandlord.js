@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 
-function ViewAllByTenant() {
+function ApprovalFlatBookingLandlord() {
     const [flatBookings,setFlatBookings] = useState([]);
 
-    const {id} = useParams();
+    const user=JSON.parse(localStorage.getItem("loginuser"));
 
     useEffect(()=>
     {
-        axios.get("http://localhost:8080/flatbooking/tenant/"+id).then(resp=>
+        axios.get("http://localhost:8080/flatbooking/landlord/approval").then(resp=>
         setFlatBookings(resp.data));
-    },[id]);
+    },[]);
 
     return(
 <div class="container">
 <div class="mb-3 mt-3">
-<h4>Flat Bookings</h4>
+<h4>Pending Approvals</h4>
 </div> 
  
 {  
@@ -28,23 +28,19 @@ function ViewAllByTenant() {
       <th>Booking From</th>
       <th>Booking To</th>
       <th>Members</th>
-      <th>Cost</th>
-      <th>Location</th>
       <th>Status</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     {
-    flatBookings?.map(f => <tr key={f.bookingNo}>
+    flatBookings?.filter(f => f.flat.landlord.userId ===user.userId).map(f => <tr key={f.bookingNo}>
         <td>{f.bookingNo}</td>
         <td>{f.bookingFrom}</td>
         <td>{f.bookingTo}</td>
         <td>{f.members}</td>
-        <td>{f.flat.cost}</td>
-        <td>{f.flat.flatAddress.city}, {f.flat.flatAddress.state}</td>
         <td>{f.status}</td>
-        <td><Link to={`/flatbooking/${f.bookingNo}`}><i class="fa fa-eye" aria-hidden="true"></i></Link></td>
+        <td><Link to={`/flatbooking/approval/landlord/${f.bookingNo}`}><button type="button" class="btn btn-outline-dark">Check Details</button></Link></td>
       </tr>)
 }
   </tbody>
@@ -54,4 +50,4 @@ function ViewAllByTenant() {
      )
 }
 
-export default ViewAllByTenant;
+export default ApprovalFlatBookingLandlord;

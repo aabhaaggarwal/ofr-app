@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import flatimage from '../assets/flat-icon-aimation.gif';
 
-function ViewFlatBookingApproval() {
+function ViewFlatBookingApprovalLandlord() {
     const navigate = useNavigate();
     const [flatBooking, setFlatBooking] = useState(null);
     const [bStatus, setBStatus] = useState('');
@@ -40,7 +40,7 @@ function ViewFlatBookingApproval() {
         }
         axios.put("http://localhost:8080/flatbooking/update", payload).then(resp => {
             alert("flatbooking " + resp.data.status);
-            navigate("/flatbooking/approval/all");
+            navigate("/flatbooking/approval/landlord/all");
         });
     }
 
@@ -118,7 +118,7 @@ function ViewFlatBookingApproval() {
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="button" class="btn btn-success" name="approved" value="Approve" onClick={handleSubmit} />
+                                        <input type="button" class="btn btn-success" name="confirm" value="Approve" onClick={handleSubmit} />
                                     </div>
                                     <div class="col">
                                         <input type="button" class="btn btn-danger" name="rejected" value="Decline" onClick={handleSubmit} />
@@ -133,4 +133,4 @@ function ViewFlatBookingApproval() {
     )
 }
 
-export default ViewFlatBookingApproval;
+export default ViewFlatBookingApprovalLandlord;
