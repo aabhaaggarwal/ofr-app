@@ -23,16 +23,18 @@ function Homepage() {
         <div>
             <div class="container-fluid">
                 <header>
+                {
+                        user==null && <Navbar/>
+                        
+                    }
                     {
+                        user!=null &&
                         user.role==='tenant' && <NavbarTenant/>
 
                     }
                      {
+                        user!=null &&
                         user.role==='landlord' && <NavbarLandlord/>
-                        
-                    }
-                    {
-                        user===null && <Navbar/>
                         
                     }
                     <div class="row justify-content-center ">
