@@ -20,13 +20,11 @@ import{useNavigate} from 'react-router-dom';
 
     }
 
-
-
     return(
 
         <div>
 
-            <button onClick={logout} className="btn btn-primary">Logout</button>
+            <button onClick={logout} className="btn btn-light">Logout</button>
 
         </div>
 
