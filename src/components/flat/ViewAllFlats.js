@@ -26,12 +26,13 @@ function ViewAllFlats() {
                     {
                         flats.length > 0 &&
                         <div class="container p-5 m-5">
-                            <div class="btn btn-warning" style={{alignContent:"center"}}>
-                                <select class="form-select" onChange={(event) => setCity(event.target.value)} value={city} >
+                            <div class="btn btn-warning d-flex justify-content-center">
+                                <select class="form-select row col-lg-12" onChange={(event) => setCity(event.target.value)} value={city} >
                                     <option value="#">Select City</option>
                                     <option value="Amritsar">Amritsar</option>
-                                    <option value="Jalandar">Jalandar</option>
-                                    <option value="Pune">Pune</option>
+                                    <option value="Jalandar">Pune</option>
+                                    <option value="Pune">Mumbai</option>
+                                    <option value="Pune">Nagpur</option>
                                 </select>
                                 
                             </div><br></br><br></br>
