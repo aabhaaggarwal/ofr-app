@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import updateflat from '../../assets/update.jpg';
+import updateflat from '../assets/update.jpg';
+import NavbarLandlord from '../headerfooter/NavbarLandlord';
 function UpdateFlat() {
 
     const [fId, setFId] = useState('');
     const [fCost, setFCost] = useState('');
     const [fFlatType, setFFlatType] = useState('');
-    // const [fAvailability, setFAvailability] = useState('');
+    const [fStatus, setFStatus] = useState('');
+    const [fAvailability, setFAvailability] = useState('');
     const [fHouseNo, setFHouseNo] = useState('');
     const [fBuilding, setFBuilding] = useState('');
     const [fStreet, setFStreet] = useState('');
@@ -15,24 +17,25 @@ function UpdateFlat() {
     const [fState, setFState] = useState('');
     const [fPincode, setFPincode] = useState('');
     const [fCountry, setFCountry] = useState('');
-    // const [fFlatAddress, setFFlatAddress] = useState('');
-    // const [fLandlord, setFLandlord] = useState('');
+    const [fAddId, setFAddId] = useState('');
      const [fLandlordId, setFLandlordId] = useState('');
 
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:8080/flat/" + id).then(resp => {
             setFId(resp.data.flatId);
             setFCost(resp.data.cost);
             setFFlatType(resp.data.flatType);
-            // setFAvailability(resp.data.availability);
-            // setFFlatAddress(resp.data.flatAddress)
+            setFStatus(resp.data.status);
+            setFAvailability(resp.data.availability);
             setFHouseNo(resp.data.flatAddress.houseNo);
             setFBuilding(resp.data.flatAddress.building);
             setFStreet(resp.data.flatAddress.street);
             setFCity(resp.data.flatAddress.city);
             setFState(resp.data.flatAddress.state);
+            setFAddId(resp.data.flatAddress.addressId);
             setFPincode(resp.data.flatAddress.pincode);
             setFCountry(resp.data.flatAddress.country);
              setFLandlordId(resp.data.landlord.userId);
@@ -44,8 +47,10 @@ function UpdateFlat() {
             flatId: fId,
             cost: fCost,
             flatType: fFlatType,
-            // availability: fAvailability,
+            status:fStatus,
+            availability: fAvailability,
             flatAddress:{
+                addressId:fAddId,
                 houseNo: fHouseNo,
                 building: fBuilding,
                 street: fStreet,
@@ -59,9 +64,12 @@ function UpdateFlat() {
         axios.put("http://localhost:8080/flat/update", payload)
             .then(resp => {
                 alert("Flat updated");
+                navigate("/myproperties/"+resp.data.landlord.userId);
             });
     }
     return (
+        <div>
+        <NavbarLandlord/><br/><br/>
         <div class="page-content page-container m-4 p-4">
         <div class="padding">
             <div class="container rounded">
@@ -165,16 +173,17 @@ function UpdateFlat() {
 
                 </div>
             </div>
-             <div class="form-group">
+             {/* <div class="form-group">
                 <label htmlFor='fLandlordId'>Landlord Id</label>
                 <input type="text" className="form-control" name="fLandlordId" id="fLandlordId" placeholder="Enter Landlord Id"
 
                     onChange={(event) => setFLandlordId(event.target.value)} value={fLandlordId} />
-            </div>
+            </div> */}
             <div>
                 <button onClick={handleSubmit} className="btn btn-primary">Update</button>
             </div>
             <br></br>
+        </div>
         </div>
         </div>
         </div>

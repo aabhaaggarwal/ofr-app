@@ -37,6 +37,11 @@ import AdminProfile from './components/admin/AdminProfile';
 import UpdateAdmin from './components/admin/UpdateAdmin';
 
 import AddAdmin from './components/admin/AddAdmin';
+import ViewMyProperty from './components/flat/ViewMyProperty';
+import MyProperties from './components/flat/MyProperties';
+import AddFlat from './components/flat/AddFlat';
+
+import UpdateFlat from './components/flat/UpdateFlat';
 
 function App() {
   return (
@@ -57,6 +62,8 @@ function App() {
         <Route path="/landlord/delete/:id" element={<DeleteLandlord />}></Route>
         <Route path="/flat/details/:id" element={<ViewFlatById />} />
         <Route path="/flat/all" element={<ViewAllFlats />} />
+        <Route path="/myproperty/:id" element={<ViewMyProperty />} />
+        <Route path="/myproperties/:id" element={<MyProperties/>} />
         <Route path="/" element={<Homepage />} />
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/navbar/tenant" element={<NavbarTenant />} />
@@ -74,6 +81,11 @@ function App() {
         <Route path="/admin/update/:id" element={<UpdateAdmin />}></Route>
 
         <Route path='/admin/add' element={<AddAdmin />}></Route>
+
+<Route path="/flat/update/:id" element ={<UpdateFlat/>}/>
+<Route path="/flat/add" element ={<AddFlat/>}/>
+
+
       </Routes>
     </BrowserRouter>
   );

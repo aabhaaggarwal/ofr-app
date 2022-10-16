@@ -1,6 +1,8 @@
 import React, { useState, usestate } from 'react';
 import axios from 'axios'
-import addflatimg from '../../assets/flat.jpg';
+import addflatimg from '../assets/flat.jpg';
+import NavbarLandlord from '../headerfooter/NavbarLandlord';
+import { useNavigate } from 'react-router-dom';
 function AddFlat() {
     const [fCost, setFCost] = useState('');
     const [fFlatType, setFFlatType] = useState('');
@@ -15,8 +17,9 @@ function AddFlat() {
     const [fFlatAddress, setFFlatAddress] = useState('');
     const [fLandlord, setFLandlord] = useState('');
     const [fLandlordId, setFLandlordId] = useState('');
-    //const user= JSON.parse.localStorage.getItem("loginuser");
+    const user= JSON.parse(localStorage.getItem("loginuser"));
     const [formErrors, setFormErrors] = useState({});
+    const navigate = useNavigate();
     const handleSubmit = () => {
 
         let errors = {};
@@ -51,9 +54,9 @@ function AddFlat() {
             errors['fCountryError'] = "Please select Country"
         }
         
-        if (!fLandlordId) {
-            errors['fLandlordIdError'] = "Please enter landlord Id"
-        }
+        // if (!fLandlordId) {
+        //     errors['fLandlordIdError'] = "Please enter landlord Id"
+        // }
 
         setFormErrors(errors);
 
@@ -73,16 +76,18 @@ function AddFlat() {
                 pincode:fPincode,
                 country:fCountry,
                 },
-                landlordId:fLandlordId
+                landlordId: user.userId
             }
             axios.post("http://localhost:8080/flat/save", payload)
                 .then(resp => {
-                    alert("New Flat Added with id" + resp.data.flatId)
+                    alert("New Flat Added with id" + resp.data.flatId);
+                    navigate("/myproperties/"+resp.data.landlord.userId);
                 });
         }
     }
     return (
-        
+        <div>
+        <NavbarLandlord/><br/><br/>
             <div class="page-content page-container m-4 p-4">
         <div class="padding">
             <div class="container rounded">
@@ -205,7 +210,7 @@ function AddFlat() {
                     }
                 </div>
             </div>
-            <div class="form-group">
+            {/* <div class="form-group">
                 <label htmlFor='fLandlordId'>Landlord Id</label>
                 <input type="text" className="form-control" name="fLandlordId" id="fLandlordId" placeholder="Enter Landlord Id"
 
@@ -214,7 +219,7 @@ function AddFlat() {
                     formErrors.fLandlordIdError && <div style={{ color: "red" }}>{formErrors.fLandlordIdError}</div>
                 }
 
-            </div>
+            </div> */}
             <div>
                 <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
 
@@ -223,7 +228,7 @@ function AddFlat() {
             </div>
         </div>
         </div>
-        </div></div>
+        </div></div></div>
     )
 }
 export default AddFlat;

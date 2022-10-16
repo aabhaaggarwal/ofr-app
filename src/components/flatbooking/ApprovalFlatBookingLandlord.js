@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import NavbarLandlord from '../headerfooter/NavbarLandlord';
 
 function ApprovalFlatBookingLandlord() {
     const [flatBookings,setFlatBookings] = useState([]);
@@ -14,6 +15,8 @@ function ApprovalFlatBookingLandlord() {
     },[]);
 
     return(
+      <div>
+            <NavbarLandlord/><br/><br/>
 <div class="container">
 <div class="mb-3 mt-3">
 <h4>Pending Approvals</h4>
@@ -46,6 +49,7 @@ function ApprovalFlatBookingLandlord() {
   </tbody>
 </table>
 }
+</div>
 </div>
      )
 }

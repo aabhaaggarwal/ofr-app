@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import update from '../assets/upgrade.jpg';
+import NavbarLandlord from "../headerfooter/NavbarLandlord";
 
 function UpdateLandlord() {
     const [lId, setLId] = useState('');
@@ -49,20 +50,20 @@ function UpdateLandlord() {
         axios.put("http://localhost:8080/landlord/update", payload)
             .then(resp => {
                 alert("Landlord Updated with id "+id);
-                navigate("/landlord/all");
+                navigate("/landlord/details/"+id);
             });
     }
 
     return (
-
-
+        <div>
+            <NavbarLandlord/><br/><br/><br/>
         <div class="container">
             <div class="row">
             <div class="col-md-6 pt-5 ">
                         <img src={update} alt='profile img' className="d-block w-100 h-100" />
                     </div>
                 <div class="col-md-6 shadow-lg pb-5" style={{ backgroundColor: "rgba(245, 245, 245)" }}>
-                    <h2 class="text-center">Logo</h2>
+                    <h2 class="text-center">Flat365</h2>
                     <p class="text-center font-weight-bold text-black-50" style={{ fontSize: "x-large" }}>Update Details</p>
                     
                         <div className="form-group">
@@ -109,8 +110,8 @@ function UpdateLandlord() {
 
                                     <option value="#">Gender</option>
                                     <option value="male">Male</option>
-                                    <option vlaue="female">Female</option>
-                                    <option vlaue="others">Others</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
                                 </select>
                             </div>
                         </div>
@@ -129,7 +130,7 @@ function UpdateLandlord() {
                             </div>
                             <div class="col">
                                 <select class="form-control" id="role"
-                                    onChange={(event) => setLRole(event.target.value)} value={lRole}>
+                                    onChange={(event) => setLRole(event.target.value)} value={lRole} disabled>
 
                                     <option value="#">Select type of user</option>
                                     <option value="landlord">Landlord</option>
@@ -144,7 +145,7 @@ function UpdateLandlord() {
                 </div>
             </div>
         </div>
-
+</div>
     )
 }
 export default UpdateLandlord;

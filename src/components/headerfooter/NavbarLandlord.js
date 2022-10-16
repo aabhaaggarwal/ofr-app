@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import MyProperties from '../flat/MyProperties';
 
 
 function NavbarLandlord(){
@@ -17,10 +18,10 @@ function NavbarLandlord(){
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <Link to="" class="nav-link text-white bg-dark">My Properties</Link>  
+                    <Link to={`/myproperties/${user.userId}`} class="nav-link text-white bg-dark">My Properties</Link>  
                     </li>
                     <li class="nav-item">
-                    <Link to="" class="nav-link text-white bg-dark">Post your property</Link>  
+                    <Link to={"/flat/add"} class="nav-link text-white bg-dark">Post your property</Link>  
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white bg-dark" href="#" id="navbardrop" data-toggle="dropdown">

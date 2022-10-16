@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import flatimage from '../assets/flat-icon-aimation.gif';
+import NavbarLandlord from '../headerfooter/NavbarLandlord';
 
 function ViewFlatBookingApprovalLandlord() {
     const navigate = useNavigate();
@@ -45,6 +46,8 @@ function ViewFlatBookingApprovalLandlord() {
     }
 
     return (
+        <div>
+            <NavbarLandlord/><br/><br/>
         <div className='container bg-light border border-warning'>
             {
                 flatBooking !== null &&
@@ -129,6 +132,7 @@ function ViewFlatBookingApprovalLandlord() {
                     </div>
                 </div>
             }
+        </div>
         </div>
     )
 }

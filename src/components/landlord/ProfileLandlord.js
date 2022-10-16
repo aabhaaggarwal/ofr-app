@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams, userParams } from 'react-router-dom';
 import proimg from '../assets/profileimage.gif';
+import NavbarLandlord from "../headerfooter/NavbarLandlord";
 
 function FetchLandlord() {
 
@@ -13,7 +14,8 @@ function FetchLandlord() {
     }, [id]);
 
     return (
-
+        <div>
+            <NavbarLandlord/><br/><br/>
         <div className='container bg-light border border-warning m-4'>
             {
                 landlord !== null &&
@@ -107,7 +109,7 @@ function FetchLandlord() {
                 </div>
             }
         </div>
-
+</div>
     )
 }
 
