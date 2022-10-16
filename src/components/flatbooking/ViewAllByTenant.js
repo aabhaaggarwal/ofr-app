@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import NavbarTenant from '../headerfooter/NavbarTenant';
 
 function ViewAllByTenant() {
     const [flatBookings,setFlatBookings] = useState([]);
@@ -14,6 +15,8 @@ function ViewAllByTenant() {
     },[id]);
 
     return(
+      <div>
+      <NavbarTenant/><br/><br/>
 <div class="container">
 <div class="mb-3 mt-3">
 <h4>Flat Bookings</h4>
@@ -50,6 +53,7 @@ function ViewAllByTenant() {
   </tbody>
 </table>
 }
+</div>
 </div>
      )
 }

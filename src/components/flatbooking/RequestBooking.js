@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import NavbarTenant from '../headerfooter/NavbarTenant';
 
 function RequestBooking() {
 
@@ -30,6 +31,8 @@ function RequestBooking() {
 
 
     return (
+        <div>
+        <NavbarTenant/><br/><br/><br/>
         <div class="container">
             <div class="card col-6 mx-auto shadow-lg">
                 <div class="card-body">
@@ -65,6 +68,7 @@ function RequestBooking() {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

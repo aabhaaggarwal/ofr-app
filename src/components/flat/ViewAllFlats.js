@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link} from 'react-router-dom'
 import axios from "axios";
 import flatimg from "../assets/card222.jpg";
+import NavbarTenant from "../headerfooter/NavbarTenant";
 
 
 function ViewAllFlats() {
@@ -19,9 +20,9 @@ function ViewAllFlats() {
 
     return (
         <div>
+        <NavbarTenant/>
+        <div>
             {
-                
-                
                 <main>
                     {
                         flats.length > 0 &&
@@ -80,6 +81,7 @@ function ViewAllFlats() {
                     }
                 </main>
             }
+        </div>
         </div>
     )
 

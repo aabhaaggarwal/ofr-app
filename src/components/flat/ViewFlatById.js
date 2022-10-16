@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import flatimg  from '../assets/15400_Apartments_for_rent_in_Dubai_Marina_20151215122124.jpg';
+import NavbarTenant from '../headerfooter/NavbarTenant';
 
 function ViewFlatById() {
     const [flat, setFlat] = useState(null);
@@ -11,6 +12,8 @@ function ViewFlatById() {
         axios.get("http://localhost:8080/flat/" + id).then(resp => setFlat(resp.data));
     }, [id]);
     return (
+        <div>
+        <NavbarTenant/><br/>
         <div>
             {
                 flat !== null &&
@@ -62,6 +65,7 @@ function ViewFlatById() {
                 </div>
             }
 
+        </div>
         </div>
 
     )

@@ -24,7 +24,7 @@ import logoutimg from "../assets/logout.jpg";
     return(
   <center>
     <div class="container">
-    <div class="card" style={{width:"500px"}}>
+    <div class="card mt-5 border-warning" style={{width:"500px"}}>
   <img class="card-img-top" src={logoutimg} alt="Card image"/>
   <div class="card-img-overlay">
     <p class="card-text" style={{fontSize:"large"}}>Are you sure you want to logout ?</p>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import flatimage from '../assets/flat-icon-aimation.gif';
+import NavbarTenant from '../headerfooter/NavbarTenant';
 
 function ViewByBookingNo(){
 
@@ -13,6 +14,8 @@ function ViewByBookingNo(){
     },[id]);
 
     return(
+        <div>
+      <NavbarTenant/><br/><br/><br/>
         <div className='container bg-light border border-warning'>
             {
                 flatBooking !== null &&
@@ -89,6 +92,7 @@ function ViewByBookingNo(){
             </div>
         </div>
     }
+        </div>
         </div>
     )
 }

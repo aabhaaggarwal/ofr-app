@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";               
 import { Link, useParams, userParams } from "react-router-dom";
 import proimg from "../assets/profile.png";
+import NavbarTenant from "../headerfooter/NavbarTenant";
 
 function TenantProfile() {
   const [tenant, setTenant] = useState(null);
@@ -13,6 +14,8 @@ function TenantProfile() {
       .then((resp) => setTenant(resp.data));
   }, [id]);
   return (
+    <div>
+      <NavbarTenant/><br/>
     <div className="container bg-light border border-warning m-5">
       {tenant !== null && (
         <div className="row">
@@ -104,6 +107,7 @@ function TenantProfile() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }
