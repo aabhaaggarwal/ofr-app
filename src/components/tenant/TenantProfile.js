@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams, userParams } from "react-router-dom";
+import axios from "axios";               
+import { Link, useParams, userParams } from "react-router-dom";
 import proimg from "../assets/profile.png";
 
 function TenantProfile() {
@@ -8,10 +8,12 @@ function TenantProfile() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get("http://localhost:8080/tenant/" + id).then((resp) => setTenant(resp.data));
+    axios
+      .get("http://localhost:8080/tenant/" + id)
+      .then((resp) => setTenant(resp.data));
   }, [id]);
   return (
-    <div className="container bg-light border border-warning">
+    <div className="container bg-light border border-warning m-5">
       {tenant !== null && (
         <div className="row">
           <div className="col-sm-6">
@@ -95,6 +97,9 @@ function TenantProfile() {
                   </div>
                 </div>
               </p>
+              <div class="form-group">
+                  <Link to={`/tenant/update/${id}`} className="btn btn-warning">Update <i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
+              </div>
             </div>
           </div>
         </div>

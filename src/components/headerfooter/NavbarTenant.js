@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 
 function NavbarTenant(){
-    const user=localStorage.getItem("loginuser");
+    const user=JSON.parse(localStorage.getItem("loginuser"));
     return(
         <div class="container-fluid">
             {
@@ -16,6 +16,9 @@ function NavbarTenant(){
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                 <ul class="navbar-nav">
+                <li class="nav-item">
+                    <Link to={"/flat/all"} class="nav-link text-white bg-dark">Search Flat</Link>  
+                    </li>
                     <li class="nav-item">
                     <Link to={`/flatbooking/tenant/${user.userId}`} class="nav-link text-white bg-dark">My Bookings</Link>  
                     </li>
