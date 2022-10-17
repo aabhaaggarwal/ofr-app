@@ -39,36 +39,40 @@ function ViewAllFlats() {
                             </div><br></br><br></br>
                             {
                                 city != '' ?
-                                    <div>
+                                    <div class="card-deck row">
                                         {
-                                            flats.filter(f => f.flatAddress.city === city).map(f => <div class="card-deck" keys={f.flatId}>
-                                                <div class="card ">
-                                                    <img class="card-img-top " src={flatimg} />
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title">{f.flatType}</h5>
-                                                        <p class="card-text">{f.flatAddress.street},{f.flatAddress.city},{f.flatAddress.state}</p>
-                                                        <p class="card-text">Owned By: {f.landlord.firstName} {f.landlord.lastName}</p>
-                                                        <Link to={`/flat/details/${f.flatId}`} className="btn btn-primary">More Details</Link>
+                                            flats.filter(f => f.flatAddress.city === city).map(f => 
+                                                <div class="col-4 mb-5">
+                                                    <div class="card ">
+                                                        <img class="card-img-top " src={flatimg} />
+                                                        <div class="card-body text-center">
+                                                            <h5 class="card-title">{f.flatType}</h5>
+                                                            <p class="card-text">{f.flatAddress.street},{f.flatAddress.city},{f.flatAddress.state}</p>
+                                                            <p class="card-text">Owned By: {f.landlord.firstName} {f.landlord.lastName}</p>
+                                                            <Link to={`/flat/details/${f.flatId}`} className="btn btn-primary">More Details</Link>
+                                                        </div>
                                                     </div>
-                                                </div><br></br><br></br>
+                                                </div>
 
-                                            </div>)
+                                            )
                                         }
                                     </div>
-                                    : <div>
+                                    : <div class="card-deck row">
                                         {
-                                            flats.map(f => <div class="card-deck" keys={f.flatId}>
-                                                <div class="card ">
-                                                    <img class="card-img-top " src={flatimg} />
-                                                    <div class="card-body text-center">
-                                                        <h5 class="card-title">{f.flatType}</h5>
-                                                        <p class="card-text">{f.flatAddress.street},{f.flatAddress.city},{f.flatAddress.state}</p>
-                                                        <p class="card-text">Owned By: {f.landlord.firstName} {f.landlord.lastName}</p>
-                                                        <Link to={`/flat/details/${f.flatId}`} className="btn btn-primary">More Details</Link>
+                                            flats.map(f => 
+                                                <div class="col-4 mb-5">
+                                                    <div class="card ">
+                                                        <img class="card-img-top " src={flatimg} />
+                                                        <div class="card-body text-center">
+                                                            <h5 class="card-title">{f.flatType}</h5>
+                                                            <p class="card-text">{f.flatAddress.street},{f.flatAddress.city},{f.flatAddress.state}</p>
+                                                            <p class="card-text">Owned By: {f.landlord.firstName} {f.landlord.lastName}</p>
+                                                            <Link to={`/flat/details/${f.flatId}`} className="btn btn-primary">More Details</Link>
+                                                        </div>
                                                     </div>
-                                                </div><br></br><br></br>
+                                                </div>
 
-                                            </div>)
+                                            )
                                         }
                                     </div>
 
