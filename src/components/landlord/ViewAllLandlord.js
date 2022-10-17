@@ -27,8 +27,6 @@ function ViewAllLandlord() {
                             <th>Age</th>
                             <th>Gender</th>
                             <th>Mobile</th>
-                            <th>View</th>
-                            <th>Update</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -44,8 +42,6 @@ function ViewAllLandlord() {
                                 <td> {l.age}</td>
                                 <td> {l.gender}</td>
                                 <td> {l.mobile}</td>
-                                <td><Link to={`/landlord/details/${l.userId}`}><i class="fa fa-eye" aria-hidden="true"></i></Link></td>
-                                <td><Link to={`/landlord/update/${l.userId}`}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link></td>
                                 <td><Link to={`/landlord/delete/${l.userId}`}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
                             </tr>)
                         }
