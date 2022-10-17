@@ -27,10 +27,7 @@ function ViewAllTenant() {
                 <th>LastName</th>
                 <th>Age</th>
                 <th>Gender</th>
-                <th>Mobile</th>
-                <th>View</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <th>Mobile</th>     
             </tr>
             </thead>
             <tbody>
@@ -46,10 +43,7 @@ function ViewAllTenant() {
                         <td>{t.age}</td>
                         <td>{t.gender}</td>
                         <td>{t.mobile}</td>
-                        <td><Link to={`/tenant/details/${t.userId}`} className="btn btn-info">View</Link></td>
-                        <td><Link to={`/tenant/update/${t.userId}`} className="btn btn-secondary">Update</Link></td>
-                        <td><Link to={`/tenant/delete/${t.userId}`} className="btn btn-danger">Delete</Link></td>
-                    </tr>)
+                       </tr>)
                 }
             </tbody>
         </table>
