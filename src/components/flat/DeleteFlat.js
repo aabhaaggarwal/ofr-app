@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import deleteimg from '../../assets/delete.webp';
+import deleteimg from '../assets/delete.gif';
 
 function DeleteFlat() {
     const [flat, setFlat] = useState(null);
     const { id } = useParams();
+    const navigate=useNavigate();
 
 
     useEffect(() => {
@@ -15,6 +16,7 @@ function DeleteFlat() {
     const handleDelete = () => {
         axios.delete("http://localhost:8080/flat/" + id).then(resp => {
             alert("Flat deleted");
+            navigate("/admin/flat/all");
 
         });
     }

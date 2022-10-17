@@ -29,6 +29,9 @@ function Login() {
                 if (payload.role == 'tenant') {
                     navigate('/');
                 }
+                if (payload.role == 'admin') {
+                    navigate('/admin/details/'+resp.data.userId);
+                }
             })
             .catch(error => {
                 //console.log(error.response.data);

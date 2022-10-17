@@ -27,6 +27,10 @@ function Homepage() {
                         
                     }
                     {
+                        user!=null && 
+                        user.role==='admin' && <Navbar/>
+                    }
+                    {
                         user!=null &&
                         user.role==='tenant' && <NavbarTenant/>
 

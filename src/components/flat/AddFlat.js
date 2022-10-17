@@ -17,7 +17,7 @@ function AddFlat() {
     const [fFlatAddress, setFFlatAddress] = useState('');
     const [fLandlord, setFLandlord] = useState('');
     const [fLandlordId, setFLandlordId] = useState('');
-    const user= JSON.parse(localStorage.getItem("loginuser"));
+    const user=JSON.parse(localStorage.getItem("loginuser"));
     const [formErrors, setFormErrors] = useState({});
     const navigate = useNavigate();
     const handleSubmit = () => {
@@ -81,7 +81,9 @@ function AddFlat() {
             axios.post("http://localhost:8080/flat/save", payload)
                 .then(resp => {
                     alert("New Flat Added with id" + resp.data.flatId);
+                  
                     navigate("/myproperties/"+resp.data.landlord.userId);
+                    
                 });
         }
     }

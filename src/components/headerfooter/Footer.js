@@ -36,10 +36,10 @@ function Footer(){
                                         <hr width="50%" size="5" class="ms-5 bg" />
                                     </h4>
                                     <ul style={{ listStyle: "none" }}>
-                                        <li class="mb-2"><a class="text-white  " href="#">Home</a></li>
-                                        <li class="mb-2"><a class="text-white  " href="#">About</a></li>
-                                        <li class="mb-2"><a class="text-white  " href="#">Contact</a></li>
-                                        <li class="mb-2"><a class="text-white  " href="#">My Profile</a></li>
+                                        <li class="mb-2"><a class="text-white" href="#">Home</a></li>
+                                        <li class="mb-2"><a class="text-white" href="#">About</a></li>
+                                        <li class="mb-2"><a class="text-white" href="#">Contact</a></li>
+                                        <li class="mb-2"><a class="text-white" href="#">My Profile</a></li>
                                     </ul>
                                 </div>
                             </div>

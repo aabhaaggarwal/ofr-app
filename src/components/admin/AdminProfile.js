@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, userParams } from 'react-router-dom';
+import { Link, useParams, userParams } from 'react-router-dom';
 import image from '../assets/admin.jpg';
+import NavbarAdmin from "../headerfooter/NavbarAdmin";
 
 function AdminProfile() {
 
@@ -13,8 +14,10 @@ function AdminProfile() {
     }, [id]);
 
     return (
-
-        <div className='container bg-light border border-warning m-4'>
+        <div class="row">
+            <NavbarAdmin/>
+            <div class="col-9">
+        <div className='bg-light border border-warning m-4'>
             {
                 admin !== null &&
                 <div className="row">
@@ -93,7 +96,7 @@ function AdminProfile() {
                                 </div>
                                 <br></br>
                                 <div class="form-group">
-                                    <button className="btn btn-warning">Update <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                    <Link to={`/admin/update/${admin.userId}`} className="btn btn-warning">Update <i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
                                 </div>
                             </p>
                         </div>
@@ -101,7 +104,8 @@ function AdminProfile() {
                 </div>
             }
         </div>
-
+        </div>
+</div>
     )
 }
 

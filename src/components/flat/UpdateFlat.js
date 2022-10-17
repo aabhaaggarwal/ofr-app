@@ -19,7 +19,7 @@ function UpdateFlat() {
     const [fCountry, setFCountry] = useState('');
     const [fAddId, setFAddId] = useState('');
      const [fLandlordId, setFLandlordId] = useState('');
-
+     const user= JSON.parse(localStorage.getItem("loginuser"));
     const { id } = useParams();
     const navigate = useNavigate();
 

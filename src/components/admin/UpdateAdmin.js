@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import uppic from '../assets/upgrade.jpg';
+import NavbarAdmin from "../headerfooter/NavbarAdmin";
 
 function UpdateAdmin() {
     const [aId, setAId] = useState('');
@@ -17,7 +18,7 @@ function UpdateAdmin() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/landlord/" + id).then(resp => {
+        axios.get("http://localhost:8080/admin/" + id).then(resp => {
             setAId(resp.data.userId);
             setAUserName(resp.data.username);
             setAPassword(resp.data.password);
@@ -43,20 +44,21 @@ function UpdateAdmin() {
         axios.put("http://localhost:8080/admin/update", payload)
             .then(resp => {
                 alert("Admin Updated with id " + id);
-               // navigate("/admin/Id");
+                navigate("/admin/details/"+id);
             });
     }
 
     return (
-
-
+        <div class="row">
+        <NavbarAdmin/>
+        <div class="col-9">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 pt-5 ">
                     <img src={uppic} alt='profile img' className="d-block w-100 h-100" />
                 </div>
-                <div class="col-md-6 shadow-lg pb-5" style={{ backgroundColor: "rgba(245, 245, 245)" }}>
-                    <h2 class="text-center">Logo</h2>
+                <div class="col-md-6 shadow-lg pt-5 pb-5" style={{ backgroundColor: "rgba(245, 245, 245)" }}>
+                    <h2 class="text-center">Flat365</h2>
                     <p class="text-center font-weight-bold text-black-50" style={{ fontSize: "x-large" }}>Update Details</p>
 
                     <div className="form-group">
@@ -103,15 +105,6 @@ function UpdateAdmin() {
                                 onChange={(event) => setAPassword(event.target.value)} value={aPassword} />
 
                         </div>
-                        <div class="col">
-                            <select class="form-control" id="role"
-                                onChange={(event) => setARole(event.target.value)} value={aRole}>
-
-                                <option value="#">Select type of user</option>
-                                <option value="landlord">Landlord</option>
-                                <option value="tenant">Tenant</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="form-group">
                         <button onClick={handleSubmit} className="btn btn-dark btn-block">Update</button>
@@ -119,6 +112,8 @@ function UpdateAdmin() {
 
                 </div>
             </div>
+        </div>
+        </div>
         </div>
 
     )
