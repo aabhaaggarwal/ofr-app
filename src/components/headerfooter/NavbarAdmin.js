@@ -31,8 +31,8 @@ function NavbarAdmin(){
                             Manage Users
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item bg-light" href="#">Landlord</a>
-                            <a class="dropdown-item bg-light" href="#">Tenant</a>
+                            <Link to={"/landlord/all"} class="dropdown-item bg-light">Landlord</Link>
+                            <Link to={"/tenant/all"} class="dropdown-item bg-light">Tenant</Link>
                         </div>
                     </li>
                     <li class="nav-item">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import NavbarAdmin from "../headerfooter/NavbarAdmin";
 
 function ViewAllLandlord() {
 
@@ -11,7 +12,10 @@ function ViewAllLandlord() {
     }, []);
 
     return (
-        <div className="container">
+        <div class="row">
+      <NavbarAdmin/>
+      <div class="col-9">
+        <div className="container shadow-lg mt-5">
             {
                 landlords.length > 0 &&
 
@@ -27,7 +31,7 @@ function ViewAllLandlord() {
                             <th>Age</th>
                             <th>Gender</th>
                             <th>Mobile</th>
-                            <th>Delete</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +53,8 @@ function ViewAllLandlord() {
                 </table>
             }
 
+        </div>
+        </div>
         </div>
     )
 }

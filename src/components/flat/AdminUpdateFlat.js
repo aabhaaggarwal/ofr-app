@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import updateflat from '../../assets/update.jpg';
+import updateflat from '../assets/update.jpg';
+import NavbarAdmin from '../headerfooter/NavbarAdmin';
 function AdminUpdateFlat() {
 
     const [fId, setFId] = useState('');
@@ -63,10 +64,13 @@ function AdminUpdateFlat() {
         axios.put("http://localhost:8080/flat/update", payload)
             .then(resp => {
                 alert("Flat updated");
-               navigate("/myproperties/"+resp.data.landlord.userId);
+               navigate("/admin/flat/all");
             });
     }
     return (
+        <div class="row">
+        <NavbarAdmin/>
+        <div class="col-9">
         <div class="page-content page-container m-4 p-4">
         <div class="padding">
             <div class="container rounded">
@@ -185,7 +189,8 @@ function AdminUpdateFlat() {
         </div>
         </div>
         </div>
-       
+       </div>
+       </div>
        
     )
 }

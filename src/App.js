@@ -47,6 +47,7 @@ import NavbarAdmin from './components/headerfooter/NavbarAdmin';
 import AdminViewAllFlats from './components/flat/AdminViewAllFlats';
 import AdminViewFlatById from './components/flat/AdminViewFlatById';
 import DeleteFlat from './components/flat/DeleteFlat';
+import AdminUpdateFlat from './components/flat/AdminUpdateFlat';
 
 function App() {
   return (
@@ -89,6 +90,9 @@ function App() {
         <Route path="admin/flat/details/:id" element={<AdminViewFlatById />} />
         <Route path='/admin/add' element={<AddAdmin />}></Route>
         <Route path='/admin/flat/all' element={<AdminViewAllFlats />}></Route>
+ <Route path="/admin/flat/update/:id" element={<AdminUpdateFlat/>}></Route>
+
+
 <Route path="/flat/update/:id" element ={<UpdateFlat/>}/>
 <Route path="/flat/add" element ={<AddFlat/>}/>
 

@@ -55,7 +55,7 @@ function AdminViewAllFlats() {
                 <td>{f.status}</td>
                 
                 <td><Link to={`/admin/flat/details/${f.flatId}`}><i class="fa fa-eye" aria-hidden="true"></i></Link></td>
-                <td><Link to={`/flat/update/${f.flatId}`}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link></td>
+                <td><Link to={`/admin/flat/update/${f.flatId}`}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link></td>
                 <td><Link to={`/flat/delete/${f.flatId}`}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
 
               </tr>)
