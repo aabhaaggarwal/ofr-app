@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import NavbarAdmin from "../headerfooter/NavbarAdmin";
-//import dlt from '../assets/delete.gif';
+import dlt from '../assets/delete.gif';
 
 function DeleteTenant() {
   const [tenant, setTenant] = useState(null);
@@ -29,9 +29,9 @@ function DeleteTenant() {
           <div class="padding">
             <div class="container rounded">
               <div class="card border-warning d-flex flex-row">
-                {/* <div className="col-sm-6">
-                            <img src={dlt} alt='profile img' className="d-block w-100 h-100" />
-                        </div> */}
+                <div className="col-sm-6">
+                  <img src={dlt} alt='profile img' className="d-block w-100 h-100" />
+                </div>
                 <div class="col-sm-6">
                   <div class="card-body bg-light">
                     <h4 class="card-title">Delete Tenant</h4>
@@ -125,7 +125,7 @@ function DeleteTenant() {
                             </div>
                             <div className="col">
                               <a href="#">
-                                <button className="btn btn-secondary ">Back <i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                                <Link to={"/tenant/all"} className="btn btn-secondary ">Back <i class="fa fa-chevron-left" aria-hidden="true"></i></Link>
                               </a>
 
                             </div>
