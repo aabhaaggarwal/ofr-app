@@ -44,7 +44,7 @@ function NavbarAdmin(){
                            Pending Approvals
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item bg-light" href="#">Flat</a>
+                            <Link to={"/flat/approval/all"} class="dropdown-item bg-light">Flat</Link>
                             <Link to={"/flatbooking/approval/all"} class="dropdown-item bg-light">FlatBooking</Link>
                             
                         </div>

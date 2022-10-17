@@ -32,7 +32,7 @@ function ViewAllTenant() {
                 <th>Age</th>
                 <th>Gender</th>
                 <th>Mobile</th> 
-                <th>Delete</th>    
+                <th></th>    
             </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@ function ViewAllTenant() {
                         <td>{t.username}</td>
                         <td>{t.password}</td>
                         <td>{t.email}</td>
-                        {/*<td>{t.role}</td>*/}
+                        <td>{t.role}</td>
                         <td>{t.firstName}</td>
                         <td>{t.lastName}</td>
                         <td>{t.age}</td>

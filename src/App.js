@@ -48,6 +48,8 @@ import AdminViewAllFlats from './components/flat/AdminViewAllFlats';
 import AdminViewFlatById from './components/flat/AdminViewFlatById';
 import DeleteFlat from './components/flat/DeleteFlat';
 import AdminUpdateFlat from './components/flat/AdminUpdateFlat';
+import FlatApproval from './components/flat/FlatApproval';
+import ViewFlatApproval from './components/flat/ViewFlatApproval';
 
 function App() {
   return (
@@ -58,8 +60,10 @@ function App() {
         <Route path="/flatbooking/:id" element={<ViewByBookingNo />}></Route>
         <Route path="/flatbooking/tenant/:id" element={<ViewAllByTenant />}></Route>
         <Route path="/flatbooking/approval/all" element={<ApprovalFlatBooking />}></Route>
+        <Route path="/flat/approval/all" element={<FlatApproval />}></Route>
         <Route path="/flatbooking/approval/landlord/all" element={<ApprovalFlatBookingLandlord />}></Route>
-        <Route path="/flatbooking/approval/:id" element={<ViewFlatBookingApproval />}></Route>,
+        <Route path="/flatbooking/approval/:id" element={<ViewFlatBookingApproval />}></Route>
+        <Route path="/flat/approval/:id" element={<ViewFlatApproval />}></Route>
         <Route path="/flatbooking/approval/landlord/:id" element={<ViewFlatBookingApprovalLandlord />}></Route>
         <Route path="/flatbooking/book/:id" element={<RequestBooking />}></Route>
         <Route path="/flatbooking/delete/:id" element={<DeleteFlatBooking/>}></Route>

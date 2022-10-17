@@ -122,7 +122,7 @@ function DeleteLandlord() {
                                             </div>
                                             <div className="col">
                                                 <a href="#">
-                                                    <button className="btn btn-secondary ">Back <i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                                                    <Link to={"/landlord/all"} className="btn btn-secondary ">Back <i class="fa fa-chevron-left" aria-hidden="true"></i></Link>
                                                 </a>
 
                                             </div>
