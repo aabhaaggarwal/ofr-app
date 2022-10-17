@@ -1,6 +1,31 @@
 import React from 'react';
+import Navbar from '../headerfooter/Navbar';
+import NavbarLandlord from '../headerfooter/NavbarLandlord';
+import NavbarTenant from '../headerfooter/NavbarTenant';
 function ContactUs() {
+  const user = JSON.parse(localStorage.getItem("loginuser"));
     return (
+      <div>
+      <header>
+      {
+                      user==null && <Navbar/>
+                      
+                  }
+                  {
+                      user!=null && 
+                      user.role==='admin' && <Navbar/>
+                  }
+                  {
+                      user!=null &&
+                      user.role==='tenant' && <NavbarTenant/>
+
+                  }
+                   {
+                      user!=null &&
+                      user.role==='landlord' && <NavbarLandlord/>
+                      
+                  }
+      </header><br/><br/>
         
 <div class="container">
     <p class="text-center bg-warning text-dark h-75 w-100  pt-5 pb-5"> <h1>Get In Touch! </h1></p>
@@ -41,7 +66,7 @@ function ContactUs() {
           </div>
     </div></div>
     </div></div>
-   
+   </div>
    
     )
 }

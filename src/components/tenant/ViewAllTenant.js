@@ -36,7 +36,7 @@ function ViewAllTenant() {
                         </thead>
                         <tbody>
                             {
-                                landlords.map(l => <tr key={l.userId}>
+                                tenants.map(t => <tr key={t.userId}>
                                     <td>{t.userId}</td>
                                     <td>{t.username}</td>
                                     <td>{t.password} </td>

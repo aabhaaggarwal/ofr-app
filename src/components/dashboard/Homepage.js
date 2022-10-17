@@ -10,6 +10,7 @@ import img5 from "../assets/card1.jpg"
 import Navbar from "../headerfooter/Navbar";
 import NavbarTenant from "../headerfooter/NavbarTenant";
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
+import Footer from "../headerfooter/Footer";
 
 function Homepage() {
     const [flats, setFlats] = useState([]);
@@ -173,7 +174,7 @@ function Homepage() {
 
                     </div>
                 </section>
-                <footer>
+                {/* <footer>
                     <div class=" container-fluid bg-dark text-white pt-4 pb-4 ">
                         <div class="container">
                             <div class="row">
@@ -213,7 +214,10 @@ function Homepage() {
                             </div>
                         </div>
                     </div>
-                </footer>
+                </footer> */}
+                {
+                 <Footer/>   
+                }
             </div>
 
         </div>

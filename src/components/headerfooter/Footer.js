@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 function Footer(){
+    const user = JSON.parse(localStorage.getItem("loginuser"));
     return(
         <div>
             <footer>
@@ -9,7 +10,7 @@ function Footer(){
                         <div class="container">
                             <div class="row">
                                 <div class="col-4">
-                                    <h3 class="mb-4">Flat365</h3>
+                                    <h3 class="mb-4"><i class="fa fa-home" aria-hidden="true"></i>Flat365</h3>
                                     <p> 
                                         Flat365 is India's fastest growing "Managed Home Rental Network" attempting to provide better rental solutions via design & technology.</p>
                                     <p>We help find, book rental homes of choice across Indian cities. We assist with move-in, provide home maintenance services from cleaning, damages to rent payment & even move-out.</p>
@@ -36,10 +37,28 @@ function Footer(){
                                         <hr width="50%" size="5" class="ms-5 bg" />
                                     </h4>
                                     <ul style={{ listStyle: "none" }}>
-                                        <li class="mb-2"><a class="text-white" href="#">Home</a></li>
-                                        <li class="mb-2"><a class="text-white" href="#">About</a></li>
-                                        <li class="mb-2"><a class="text-white" href="#">Contact</a></li>
-                                        <li class="mb-2"><a class="text-white" href="#">My Profile</a></li>
+                                        <li class="mb-2"><Link to={"/"} class="text-white">Home</Link></li>
+                                        <li class="mb-2"><Link to={"/aboutus"} class="text-white">About</Link></li>
+                                        <li class="mb-2"><Link to={"/contactus"} class="text-white">Contact</Link></li>
+                                        {
+                                            user==null &&
+                                        <li class="mb-2"><Link to={"/login"} class="text-white">My Profile</Link></li>
+                                        }
+                                           {
+                        user!=null && 
+                        user.role==='admin' &&
+                        <li class="mb-2"><Link to={"/login"} class="text-white">My Profile</Link></li>
+                    }
+                    {
+                        user!=null &&
+                        user.role==='tenant' && <li class="mb-2"><Link to={`/tenant/details/${user.userId}`} class="text-white">My Profile</Link></li>
+
+                    }
+                     {
+                        user!=null &&
+                        user.role==='landlord' && <li class="mb-2"><Link to={`/landlord/details/${user.userId}`} class="text-white">My Profile</Link></li>
+                        
+                    }
                                     </ul>
                                 </div>
                             </div>

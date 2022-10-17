@@ -1,7 +1,32 @@
 import React from 'react';
-import aboutimg from '../../assets/aboutus.jpg';
+import aboutimg from '../assets/aboutus.jpg';
+import Navbar from '../headerfooter/Navbar';
+import NavbarLandlord from '../headerfooter/NavbarLandlord';
+import NavbarTenant from '../headerfooter/NavbarTenant';
 function AboutUs() {
+    const user = JSON.parse(localStorage.getItem("loginuser"));
     return (
+        <div>
+        <header>
+        {
+                        user==null && <Navbar/>
+                        
+                    }
+                    {
+                        user!=null && 
+                        user.role==='admin' && <Navbar/>
+                    }
+                    {
+                        user!=null &&
+                        user.role==='tenant' && <NavbarTenant/>
+
+                    }
+                     {
+                        user!=null &&
+                        user.role==='landlord' && <NavbarLandlord/>
+                        
+                    }
+        </header><br/><br/><br/><br/><br/>
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -21,6 +46,7 @@ function AboutUs() {
                         effectively and inexpensively.</p>
                 </div>
                 </div>
+        </div>
         </div>
     )
 }

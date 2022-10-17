@@ -29,11 +29,11 @@ function ViewAllFlats() {
                         <div class="container p-5 m-5">
                             <div class="btn btn-warning d-flex justify-content-center">
                                 <select class="form-select row col-lg-12" onChange={(event) => setCity(event.target.value)} value={city} >
-                                    <option value="#">Select City</option>
+                                    <option value="">Select City</option>
                                     <option value="Amritsar">Amritsar</option>
-                                    <option value="Jalandar">Pune</option>
-                                    <option value="Pune">Mumbai</option>
-                                    <option value="Pune">Nagpur</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Nagpur">Nagpur</option>
                                 </select>
                                 
                             </div><br></br><br></br>

@@ -50,6 +50,9 @@ import DeleteFlat from './components/flat/DeleteFlat';
 import AdminUpdateFlat from './components/flat/AdminUpdateFlat';
 import FlatApproval from './components/flat/FlatApproval';
 import ViewFlatApproval from './components/flat/ViewFlatApproval';
+import Footer from './components/headerfooter/Footer';
+import AboutUs from './components/dashboard/AboutUs';
+import ContactUs from './components/dashboard/ContactUs';
 
 function App() {
   return (
@@ -85,6 +88,7 @@ function App() {
         <Route path="/tenant/delete/:id" element={<DeleteTenant />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
+        <Route path="/footer" element={<Footer />}></Route>
         <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
         <Route path="/landlord/update/:id" element={<UpdateLandlord />}></Route>
         <Route path="/tenant/update/:id" element={<UpdateTenant />}></Route>
@@ -95,7 +99,8 @@ function App() {
         <Route path='/admin/add' element={<AddAdmin />}></Route>
         <Route path='/admin/flat/all' element={<AdminViewAllFlats />}></Route>
  <Route path="/admin/flat/update/:id" element={<AdminUpdateFlat/>}></Route>
-
+<Route path="/aboutus" element={<AboutUs/>}></Route>
+<Route path="/contactus" element={<ContactUs />}></Route>
 
 <Route path="/flat/update/:id" element ={<UpdateFlat/>}/>
 <Route path="/flat/add" element ={<AddFlat/>}/>
