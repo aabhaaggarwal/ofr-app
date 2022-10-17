@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import NavbarAdmin from '../headerfooter/NavbarAdmin';
 
 function UpdateFlatBooking() {
 
@@ -43,8 +44,12 @@ function UpdateFlatBooking() {
      } );
     }
     return (
+      <div class="row">
+      <NavbarAdmin/>
+      <div class="col-9">
+        <br/><br/><br/>
         <div class="container">
-        <div class="card col-6 mx-auto shadow-lg">
+        <div class="card mx-auto shadow-lg">
             <div class="card-body">
               <h4 class="card-title">Update Booking Details</h4>
               <form>
@@ -77,6 +82,8 @@ function UpdateFlatBooking() {
               </div>
             </div>
           </div>
+    </div>
+    </div>
     </div>
     )
 

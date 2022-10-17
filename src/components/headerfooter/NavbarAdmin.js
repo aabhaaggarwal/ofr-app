@@ -36,7 +36,7 @@ function NavbarAdmin(){
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black-50"> Manage Bookings</a>
+                        <Link to={"/flatbooking/all"} class="nav-link text-black-50"> Manage Bookings</Link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-black-50" href="#" id="navbardrop"
@@ -45,13 +45,13 @@ function NavbarAdmin(){
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item bg-light" href="#">Flat</a>
-                            <a class="dropdown-item bg-light" href="#">FlatBooking</a>
+                            <Link to={"/flatbooking/approval/all"} class="dropdown-item bg-light">FlatBooking</Link>
                             
                         </div>
                     </li>
                    
                     <li class="nav-item">
-                        <a class="nav-link text-black-50" href="#">  Logout </a>
+                        <Link to={"/logout"} class="nav-link text-black-50">  Logout </Link>
                     </li>
                 </ul>
             </nav>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import NavbarAdmin from "../headerfooter/NavbarAdmin";
 //import dlt from '../assets/delete.gif';
 
 function DeleteTenant() {
@@ -21,6 +22,9 @@ function DeleteTenant() {
     });
   };
   return (
+    <div class="row">
+    <NavbarAdmin/>
+    <div class="col-9">
     <div class="page-content page-container">
       <div class="padding">
         <div class="container rounded">
@@ -133,6 +137,8 @@ function DeleteTenant() {
           </div>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 }

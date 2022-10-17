@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import NavbarAdmin from '../headerfooter/NavbarAdmin';
 
 function ViewAllFlatBooking() {
     const [flatBookings,setFlatBookings] =useState([]);
@@ -11,6 +12,9 @@ function ViewAllFlatBooking() {
     },[]);
 
     return(
+      <div class="row">
+      <NavbarAdmin/>
+      <div class="col-9">
 <div class="container">
         <div class="mb-3 mt-3">
         <h4>Flat Bookings</h4>
@@ -27,7 +31,7 @@ function ViewAllFlatBooking() {
               <th>Status</th>
               <th>FlatId</th>
               <th>TenantId</th>
-              <th></th>
+              {/* <th></th> */}
               <th></th>
               <th></th>
             </tr>
@@ -42,7 +46,7 @@ function ViewAllFlatBooking() {
                 <td>{f.status}</td>
                 <td>{f.flat.flatId}</td>
                 <td>{f.tenant.userId}</td>
-                <td><Link to={`/flatbooking/${f.bookingNo}`}><i class="fa fa-eye" aria-hidden="true"></i></Link></td>
+                {/* <td><Link to={`/flatbooking/${f.bookingNo}`}><i class="fa fa-eye" aria-hidden="true"></i></Link></td> */}
                 <td><Link to={`/flatbooking/update/${f.bookingNo}`}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link></td>
                 <td><Link to={`/flatbooking/delete/${f.bookingNo}`}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
               </tr>)
@@ -50,6 +54,8 @@ function ViewAllFlatBooking() {
           </tbody>
         </table>
 }
+      </div>
+      </div>
       </div>
     )
 }

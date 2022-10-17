@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import flatimage from '../assets/flat-icon-aimation.gif';
+import NavbarAdmin from "../headerfooter/NavbarAdmin";
 
 function DeleteFlatBooking() {
     const [flatBooking, setFlatBooking] = useState(null);
@@ -20,6 +21,9 @@ function DeleteFlatBooking() {
     }
 
     return (
+        <div class="row">
+        <NavbarAdmin/>
+        <div class="col-9">
         <div className='container bg-light border border-warning'>
             {
                 flatBooking !== null &&
@@ -104,6 +108,8 @@ function DeleteFlatBooking() {
             </div>
         </div>
     }
+        </div>
+        </div>
         </div>
  )
 }

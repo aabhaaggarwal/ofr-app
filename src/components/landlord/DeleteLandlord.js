@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import dlt from '../assets/delete.gif';
+import NavbarAdmin from "../headerfooter/NavbarAdmin";
 
 function DeleteLandlord() {
     const [landlord, setLandlord] = useState(null);
@@ -19,6 +20,9 @@ function DeleteLandlord() {
         });
     }
     return (
+        <div class="row">
+        <NavbarAdmin/>
+        <div class="col-9">
         <div class="page-content page-container m-4">
             <div class="padding">
                 <div class="container rounded">
@@ -130,6 +134,8 @@ function DeleteLandlord() {
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
     )
 }

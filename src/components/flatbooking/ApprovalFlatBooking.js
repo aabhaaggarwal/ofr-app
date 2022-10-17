@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import NavbarAdmin from '../headerfooter/NavbarAdmin';
 
 function ApprovalFlatBooking() {
     const [flatBookings,setFlatBookings] = useState([]);
@@ -12,6 +13,9 @@ function ApprovalFlatBooking() {
     },[]);
 
     return(
+      <div class="row">
+        <NavbarAdmin/>
+        <div class="col-9">
 <div class="container">
 <div class="mb-3 mt-3">
 <h4>Pending Approvals</h4>
@@ -44,6 +48,8 @@ function ApprovalFlatBooking() {
   </tbody>
 </table>
 }
+</div>
+</div>
 </div>
      )
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import deleteimg from '../assets/delete.gif';
+import NavbarAdmin from '../headerfooter/NavbarAdmin';
 
 function DeleteFlat() {
     const [flat, setFlat] = useState(null);
@@ -21,6 +22,9 @@ function DeleteFlat() {
         });
     }
     return (
+        <div class="row">
+      <NavbarAdmin/>
+      <div class="col-9">
         <div class="page-content page-container m-4 p-4">
             <div class="padding">
                 <div class="container rounded">
@@ -87,13 +91,7 @@ function DeleteFlat() {
                                             <br></br>
                                             <div>
                                                 
-                                                <button onClick={handleDelete} className="btn btn-danger">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
-                                            
-                                            <a href="/flat/details/:id">
-                                            <button className="btn btn-secondary">Back <i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-                                            </a>
-
-                                                
+                                                <button onClick={handleDelete} className="btn btn-danger">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>  
                                             </div>
 
                                         </p>
@@ -106,6 +104,8 @@ function DeleteFlat() {
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
 
     )

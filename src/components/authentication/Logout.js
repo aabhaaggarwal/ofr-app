@@ -4,7 +4,7 @@ import{Link, useNavigate} from 'react-router-dom';
 import logoutimg from "../assets/logout.jpg";
 
  function Logout(){
-
+  const userlogin=JSON.parse(localStorage.getItem("loginuser"));
     const navigate= useNavigate();
 
     const logout=()=>{
@@ -32,9 +32,14 @@ import logoutimg from "../assets/logout.jpg";
         <div class="col">
     <Link to={"/"} class="btn btn-warning" onClick={logout}>Logout</Link>
     </div>
+    
     <div class="col">
+      {
+        userlogin.role=='admin' ? <Link to={`/admin/details/${userlogin.userId}`} class="btn btn-danger">Cancel</Link>:
     <Link to={"/"} class="btn btn-danger">Cancel</Link>
+      }
     </div>
+ 
     </div>
   </div>
 </div>
