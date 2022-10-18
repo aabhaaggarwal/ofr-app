@@ -6,6 +6,7 @@ import { addLandlord } from "../../service/LandlordService";
 import { addTenant } from "../../service/TenantService";
 import Navbar from "../headerfooter/Navbar";
 import Footer from "../headerfooter/Footer";
+import { validEmail, validMobile, validName, validPassword, validUsername } from "../../service/AuthenticationService";
 
 function AddUser() {
     const [lUserName, setLUserName] = useState('');
@@ -25,32 +26,29 @@ function AddUser() {
     const handleSubmit = () => {
 
         let errors = {};
-        if (!lUserName) {
-            errors['lUserNameError'] = "UserName name is required."
+        if (!lUserName || !lPassword || !lFirstName || !lLastName || !lAge || !lEmail || !lGender || !lMobile || !lRole) {
+            errors['nullError'] = "This field is required"
         }
-        if (!lPassword) {
-            errors['lPasswordError'] = "Password is required."
+        if (!validUsername.test(lUserName)) {
+            errors['lUserNameError'] = "Invalid username"
         }
-        if (!lFirstName) {
+        if (!validPassword.test(lPassword)) {
+            errors['lPasswordError'] = "Invalid password"
+        }
+        if (!validName.test(lFirstName)) {
             errors['lFirstNameError'] = "First name is required."
         }
-        if (!lLastName) {
+        if (!validName.test(lLastName)) {
             errors['lLastNameError'] = "Last name is required."
         }
-        if (!lRole) {
-            errors['lRoleError'] = "Role is required."
-        }
-        if (!lGender) {
-            errors['lGenderError'] = "Gender is required."
-        }
-        if (!lEmail) {
+        if (!validEmail.test(lEmail)) {
             errors['lEmailError'] = "Email is required."
         }
-        if (!lAge) {
-            errors['lAgeError'] = "Age is required."
+        if (lAge < 18) {
+            errors['lAgeError'] = "Age below 18 cannot signup"
         }
 
-        if (lMobile < 10) {
+        if (!validMobile.test(lMobile)) {
             errors['lMobileError'] = "Please enter valid number!!"
         }
 
@@ -77,14 +75,14 @@ function AddUser() {
                     .then(resp => {
                         alert("Account Created successfully");
                         navigate("/login");
-                    }).catch(error=> alert(error.response.data));
+                    }).catch(error => alert(error.response.data));
             }
             if (lRole == 'tenant') {
                 addTenant(payload)
                     .then(resp => {
                         alert("Account Created successfully");
                         navigate("/login");
-                    }).catch(error=> alert(error.response.data));
+                    }).catch(error => alert(error.response.data));
             }
         }
 
@@ -93,9 +91,9 @@ function AddUser() {
     return (
 
         <div class="container-fluid">
-            <Navbar/>
+            <Navbar />
             <br></br>
-            <br></br><br/><br/>
+            <br></br><br /><br />
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 pt-5 ">
@@ -113,6 +111,9 @@ function AddUser() {
                             {
                                 formErrors.lUserNameError && <div style={{ color: "red" }}>{formErrors.lUserNameError}</div>
                             }
+                            {
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                            }
                         </div>
                         <div class="form-group">
                             <div className="row">
@@ -123,6 +124,9 @@ function AddUser() {
                                     {
                                         formErrors.lFirstNameError && <div style={{ color: "red" }}>{formErrors.lFirstNameError}</div>
                                     }
+                                    {
+                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                                    }
                                 </div>
                                 <div class="col">
 
@@ -130,6 +134,9 @@ function AddUser() {
                                         onChange={(event) => setLLastName(event.target.value)} value={lLastName} />
                                     {
                                         formErrors.lLastNameError && <div style={{ color: "red" }}>{formErrors.lLastNameError}</div>
+                                    }
+                                    {
+                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                                     }
                                 </div>
                             </div>
@@ -141,27 +148,33 @@ function AddUser() {
                             {
                                 formErrors.lEmailError && <div style={{ color: "red" }}>{formErrors.lEmailError}</div>
                             }
+                            {
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                            }
                         </div>
                         <div class="row form-group">
                             <div class="col">
 
-                                <input type="number" className="form-control" name="lAge" id="lAge"  min="18" placeholder="Enter your age"
+                                <input type="number" className="form-control" name="lAge" id="lAge" min="18" placeholder="Enter your age"
                                     onChange={(event) => setLAge(event.target.value)} value={lAge} />
                                 {
                                     formErrors.lAgeError && <div style={{ color: "red" }}>{formErrors.lAgeError}</div>
+                                }
+                                {
+                                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                                 }
                             </div>
                             <div class="col">
                                 <select class="form-control" id="gender"
                                     onChange={(event) => setLGender(event.target.value)} value={lGender}>
 
-                                    <option value="#">Gender</option>
+                                    <option value="">Gender</option>
                                     <option value="male">Male</option>
                                     <option vlaue="female">Female</option>
                                     <option vlaue="others">Others</option>
                                 </select>
                                 {
-                                    formErrors.lGenderError && <div style={{ color: "red" }}>{formErrors.lGenderError}</div>
+                                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                                 }
                             </div>
                         </div>
@@ -172,6 +185,9 @@ function AddUser() {
                             {
                                 formErrors.lMobileError && <div style={{ color: "red" }}>{formErrors.lMobileError}</div>
                             }
+                            {
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                            }
                         </div>
                         <div class="row form-group">
                             <div class="col">
@@ -181,17 +197,20 @@ function AddUser() {
                                 {
                                     formErrors.lPasswordError && <div style={{ color: "red" }}>{formErrors.lPasswordError}</div>
                                 }
+                                {
+                                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                                }
                             </div>
                             <div class="col">
                                 <select class="form-control" id="role"
                                     onChange={(event) => setLRole(event.target.value)} value={lRole}>
 
-                                    <option value="#">Select type of user</option>
+                                    <option value="">Select type of user</option>
                                     <option value="landlord">Landlord</option>
                                     <option value="tenant">Tenant</option>
                                 </select>
                                 {
-                                    formErrors.lRoleError && <div style={{ color: "red" }}>{formErrors.lRoleError}</div>
+                                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                                 }
                             </div>
                         </div>
@@ -207,7 +226,7 @@ function AddUser() {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
 
     )

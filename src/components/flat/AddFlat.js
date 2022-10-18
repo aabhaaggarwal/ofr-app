@@ -9,7 +9,6 @@ import Footer from '../headerfooter/Footer';
 function AddFlat() {
     const [fCost, setFCost] = useState('');
     const [fFlatType, setFFlatType] = useState('');
-    // const [fAvailability, setFAvailability] = useState('');
     const [fHouseNo, setFHouseNo] = useState(''); 
     const [fBuilding, setFBuilding] = useState('');
     const [fStreet, setFStreet] = useState('');
@@ -18,49 +17,16 @@ function AddFlat() {
     const [fPincode, setFPincode] = useState('');
     const [fCountry, setFCountry] = useState('');
     const [fFlatAddress, setFFlatAddress] = useState('');
-    const [fLandlord, setFLandlord] = useState('');
-    const [fLandlordId, setFLandlordId] = useState('');
     const user=JSON.parse(localStorage.getItem("loginuser"));
     const [formErrors, setFormErrors] = useState({});
     const navigate = useNavigate();
     const handleSubmit = () => {
 
         let errors = {};
-        if (!fCost) {
-            errors['fCostError'] = "Flat Cost is required"
+        if (!fCost || !fFlatType || !fHouseNo || !fBuilding || !fStreet || !fCity || !fState || !fPincode || !fCountry) {
+            errors['nullError'] = "This field is reqiured"
         }
-        if (!fFlatType) {
-            errors['fFlatTypeError'] = "Flat Type is required"
-        }
-        // if (!fAvailability) {
-        //     errors['fAvailabilityError'] = "Please select availability"
-        // }
-        if (!fHouseNo) {
-            errors['fHouseNoError'] = " House No. is required"
-        }
-        if (!fBuilding) {
-            errors['fBuildingError'] = "Building is required"
-        }
-        if (!fStreet) {
-            errors['fStreetError'] = "Street is required"
-        }
-        if (!fCity) {
-            errors['fCityError'] = "Please select City"
-        }
-        if (!fState) {
-            errors['fStateError'] = " PLease select State "
-        }
-        if (!fPincode) {
-            errors['fPincodeError'] = "Pincode is required"
-        }
-        if (!fCountry) {
-            errors['fCountryError'] = "Please select Country"
-        }
-        
-        // if (!fLandlordId) {
-        //     errors['fLandlordIdError'] = "Please enter landlord Id"
-        // }
-
+      
         setFormErrors(errors);
 
         const noErrors = Object.keys(errors).length === 0;
@@ -69,7 +35,6 @@ function AddFlat() {
     
                 cost: fCost,
                 flatType: fFlatType,
-                // availability: fAvailability,
                 flatAddress:{
                 houseNo:fHouseNo, 
                 building:fBuilding,
@@ -105,10 +70,10 @@ function AddFlat() {
 
             <div className="form-group">
                 <label htmlFor='fCost'>Cost</label>
-                <input type="text" className="form-control" name="fCost" id="fCost" placeholder="Enter Flat Cost" pattern='/^\d+$/'
+                <input type="text" className="form-control" name="fCost" id="fCost" placeholder="Enter Flat Cost" pattern='/^\d+$/' aria-errormessage='Invalid cost'
                     onChange={(event) => setFCost(event.target.value)} value={fCost} />
                 {
-                    formErrors.fCostError && <div style={{ color: "red" }}>{formErrors.fCostError}</div>
+                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                 }
             </div>
 
@@ -121,7 +86,7 @@ function AddFlat() {
                                 <option value="4-BHK">4-BHK</option>            
                    </select>
                 {
-                    formErrors.fFlatTypeError && <div style={{ color: "red" }}>{formErrors.fFlatTypeError}</div>
+                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                 }
             </div>
 
@@ -145,7 +110,7 @@ function AddFlat() {
 
                             onChange={(event) => setFHouseNo(event.target.value)} value={fFlatAddress.houseNo} />
                         {
-                            formErrors.fHouseNoError && <div style={{ color: "red" }}>{formErrors.fHouseNoError}</div>
+                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                         }
                     </div>
 
@@ -155,7 +120,7 @@ function AddFlat() {
 
                             onChange={(event) => setFBuilding(event.target.value)} value={fFlatAddress.building} />
                         {
-                            formErrors.fBuildingError && <div style={{ color: "red" }}>{formErrors.fBuildingError}</div>
+                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                         }
                     </div>
 
@@ -164,7 +129,7 @@ function AddFlat() {
                         <input type="text" className="form-control" name="fStreet" id="fStreet" placeholder="Enter Street"
                             onChange={(event) => setFStreet(event.target.value)} value={fFlatAddress.street} />
                         {
-                            formErrors.fStreetError && <div style={{ color: "red" }}>{formErrors.fStreetError}</div>
+                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                         }
                     </div>
                 </div>
@@ -174,14 +139,14 @@ function AddFlat() {
                         <div class="col-4">
                             <label htmlFor='fCity'>City</label>
                             <select class="select form-control " name="fCity" id="fCity"  onChange={(event) => setFCity(event.target.value)} value={fFlatAddress.city}>
-                            <option value="#">Select City</option>
+                            <option value="">Select City</option>
                                 <option value="Amritsar">Amritsar</option>
                                 <option value="Pune">Pune</option>
                                 <option value="Mumbai">Mumbai</option>
                                 <option value="Nagpur">Nagpur</option>
                                 </select>
                             {
-                                formErrors.fCityError && <div style={{ color: "red" }}>{formErrors.fCityError}</div>
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                             }
                         </div>
                         <div class="col-4">
@@ -192,7 +157,7 @@ function AddFlat() {
                                 <option value="Maharashtra">Maharashtra</option>
                                 </select> 
                             {
-                                formErrors.fStateError && <div style={{ color: "red" }}>{formErrors.fStateError}</div>
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                             }
                         </div>
                         <div class="col-4">
@@ -201,7 +166,7 @@ function AddFlat() {
 
                                 onChange={(event) => setFPincode(event.target.value)} value={fFlatAddress.pincode} />
                             {
-                                formErrors.fPincodeError && <div style={{ color: "red" }}>{formErrors.fPincodeError}</div>
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                             }
                         </div>
                     </div>
@@ -211,7 +176,7 @@ function AddFlat() {
                                 <option value="India">India</option>
                                  </select>
                     {
-                        formErrors.fCountryError && <div style={{ color: "red" }}>{formErrors.fCountryError}</div>
+                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                     }
                 </div>
             </div>

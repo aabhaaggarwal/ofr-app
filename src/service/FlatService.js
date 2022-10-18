@@ -32,3 +32,7 @@ export function myProperties(landlordId){
 export function flatSearch(){
     return axios.get(baseUrl+"/flat/search");
 }
+
+export const validPincode = new RegExp(
+    '^[1-9][0-9]{5}$'
+);
