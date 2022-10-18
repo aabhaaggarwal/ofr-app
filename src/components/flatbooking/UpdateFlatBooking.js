@@ -42,7 +42,7 @@ function UpdateFlatBooking() {
         updateFlatBooking(payload).then(resp => {
             alert("FlatBooking updated");
             navigate("/flatbooking/all");
-     } );
+     } ).catch(error=> alert(error.response.data));
     }
     return (
       <div class="row">

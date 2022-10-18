@@ -18,7 +18,7 @@ function DeleteFlatBooking() {
         deleteFlatBooking(id).then(resp => {
             alert("flatbooking deleted.");
             navigate("/flatbooking/all");
-        });
+        }).catch(error=> alert(error.response.data));
     }
 
     return (

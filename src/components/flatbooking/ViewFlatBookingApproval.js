@@ -27,7 +27,7 @@ function ViewFlatBookingApproval() {
             setBTenantId(resp.data.tenant.userId);
             setFlatBooking(resp.data);
             setBStatus(resp.data.status);
-        });
+        }).catch(error=> alert(error.response.data));
     }, [id]);
 
     const handleSubmit = (event) => {
@@ -43,7 +43,7 @@ function ViewFlatBookingApproval() {
         updateFlatBooking(payload).then(resp => {
             alert("flatbooking " + resp.data.status);
             navigate("/flatbooking/approval/all");
-        });
+        }).catch(error=> alert(error.response.data));
     }
 
     return (

@@ -43,7 +43,7 @@ function ViewFlatBookingApprovalLandlord() {
         updateFlatBooking(payload).then(resp => {
             alert("flatbooking " + resp.data.status);
             navigate("/flatbooking/approval/landlord/all");
-        });
+        }).catch(error=> alert(error.response.data));
     }
 
     return (
