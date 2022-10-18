@@ -5,9 +5,9 @@ import profile from '../assets/sign-up-concept-illustration_114360-7885.jpg';
 import { addAdmin } from "../../service/AdminService";
 import Navbar from "../headerfooter/Navbar";
 import Footer from "../headerfooter/Footer";
+import { validEmail, validMobile, validName, validPassword, validUsername } from "../../service/AuthenticationService";
 
 function AddAdmin() {
-    const [aId, setAId] = useState('');
     const [aUserName, setAUserName] = useState('');
     const [aPassword, setAPassword] = useState('');
     const [aFirstName, setAFirstName] = useState('');
@@ -22,24 +22,29 @@ function AddAdmin() {
     const handleSubmit = () => {
 
         let errors = {};
-        if (!aUserName) {
-            errors['aUserNameError'] = "UserName name is required."
+        if (!aUserName || !aPassword || !aFirstName || !aLastName || !aEmail || !aMobile) {
+            errors['nullError'] = "This field is reqiured"
         }
-        if (!aPassword) {
-            errors['aPasswordError'] = "Password is required."
+
+        if (!validUsername.test(aUserName)) {
+            errors['aUsernameError'] = "Invalid username"
         }
-        if (!aFirstName) {
-            errors['aFirstNameError'] = "First name is required."
+
+        if (!validPassword.test(aPassword)) {
+            errors['aPasswordError'] = "Invalid password"
         }
-        if (!aLastName) {
-            errors['aLastNameError'] = "Last name is required."
+        if (!validName.test(aFirstName)) {
+            errors['aFirstNameError'] = "Invalid first name"
         }
-       
-        if (!aEmail) {
-            errors['aEmailError'] = "Email is required."
+        if (!validName.test(aLastName)) {
+            errors['aLastNameError'] = "Invalid last name"
         }
-        
-        if (aMobile < 10) {
+
+        if (!validEmail.test(aEmail)) {
+            errors['aEmailError'] = "Invalid email"
+        }
+
+        if (!validMobile.test(aMobile)) {
             errors['aMobileError'] = "Please enter valid number!!"
         }
 
@@ -58,11 +63,11 @@ function AddAdmin() {
                 mobile: aMobile
 
             }
-                addAdmin(payload)
-                    .then(resp => {
-                        alert("Admin account created");
-                        navigate("/login");
-                    }).catch(error=> alert(error.response.data));
+            addAdmin(payload)
+                .then(resp => {
+                    alert("Admin account created");
+                    navigate("/login");
+                }).catch(error => alert(error.response.data));
         }
 
     }
@@ -70,9 +75,9 @@ function AddAdmin() {
     return (
 
         <div class="container-fluid">
-            <Navbar/>
+            <Navbar />
             <br></br>
-            <br></br><br/><br/>
+            <br></br><br /><br />
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 pt-5 ">
@@ -90,6 +95,9 @@ function AddAdmin() {
                             {
                                 formErrors.aUserNameError && <div style={{ color: "red" }}>{formErrors.aUserNameError}</div>
                             }
+                            {
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                            }
                         </div>
                         <div class="form-group">
                             <div className="row">
@@ -100,6 +108,9 @@ function AddAdmin() {
                                     {
                                         formErrors.aFirstNameError && <div style={{ color: "red" }}>{formErrors.aFirstNameError}</div>
                                     }
+                                    {
+                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                                    }
                                 </div>
                                 <div class="col">
 
@@ -107,6 +118,9 @@ function AddAdmin() {
                                         onChange={(event) => setALastName(event.target.value)} value={aLastName} />
                                     {
                                         formErrors.aLastNameError && <div style={{ color: "red" }}>{formErrors.aLastNameError}</div>
+                                    }
+                                    {
+                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                                     }
                                 </div>
                             </div>
@@ -118,14 +132,20 @@ function AddAdmin() {
                             {
                                 formErrors.aEmailError && <div style={{ color: "red" }}>{formErrors.aEmailError}</div>
                             }
+                            {
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                            }
                         </div>
-                        
+
                         <div class="form-group">
 
                             <input type="tel" className="form-control" name="lMobile" id="lMobile" placeholder="Enter phone number"
-                                onChange={(event) => setAMobile(event.target.value)} value={aMobile} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+                                onChange={(event) => setAMobile(event.target.value)} value={aMobile} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                             {
                                 formErrors.aMobileError && <div style={{ color: "red" }}>{formErrors.aMobileError}</div>
+                            }
+                            {
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                             }
                         </div>
                         <div class="row form-group">
@@ -136,8 +156,11 @@ function AddAdmin() {
                                 {
                                     formErrors.aPasswordError && <div style={{ color: "red" }}>{formErrors.aPasswordError}</div>
                                 }
+                                {
+                                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                                }
                             </div>
-                            </div>
+                        </div>
                         <br></br>
                         <div class="form-group">
                             <button onClick={handleSubmit} className="btn btn-dark btn-block">Submit</button>
@@ -150,7 +173,7 @@ function AddAdmin() {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
 
     )
