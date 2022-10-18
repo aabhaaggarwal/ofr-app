@@ -21,7 +21,7 @@ function DeleteFlat() {
             alert("Flat deleted");
             navigate("/admin/flat/all");
 
-        });
+        }).catch(error=> alert(error.response.data));
     }
     return (
         <div class="row">

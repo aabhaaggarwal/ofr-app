@@ -113,9 +113,7 @@ function UpdateAdmin() {
                                         {
                                             formErrors.aFirstNameError && <div style={{ color: "red" }}>{formErrors.aUserNameError}</div>
                                         }
-                                        {
-                                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                        }
+                                      
 
                                     </div>
                                     <div class="col">
@@ -125,9 +123,7 @@ function UpdateAdmin() {
                                         {
                                             formErrors.aLastNameError && <div style={{ color: "red" }}>{formErrors.aLastNameError}</div>
                                         }
-                                        {
-                                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                        }
+                                      
 
                                     </div>
                                 </div>
@@ -139,9 +135,7 @@ function UpdateAdmin() {
                                 {
                                     formErrors.aEmailError && <div style={{ color: "red" }}>{formErrors.aEmailError}</div>
                                 }
-                                {
-                                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                }
+                               
 
                             </div>
                             <div class="form-group">
@@ -151,9 +145,7 @@ function UpdateAdmin() {
                                 {
                                     formErrors.aMobileError && <div style={{ color: "red" }}>{formErrors.aMobileError}</div>
                                 }
-                                {
-                                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                }
+                               
 
                             </div>
                             <div class="row form-group">
@@ -164,14 +156,15 @@ function UpdateAdmin() {
                                     {
                                         formErrors.aPasswordError && <div style={{ color: "red" }}>{formErrors.aPasswordError}</div>
                                     }
-                                    {
-                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                    }
+                                  
 
                                 </div>
                             </div>
                             <div class="form-group">
                                 <button onClick={handleSubmit} className="btn btn-dark btn-block">Update</button>
+                                {
+                                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                                }
                             </div>
 
                         </div>

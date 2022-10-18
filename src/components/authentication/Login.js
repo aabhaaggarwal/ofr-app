@@ -21,9 +21,6 @@ function Login() {
         }
         loginUser(payload)
             .then(resp => {
-                //console.log(resp);
-                //setMessage('');
-                // alert("New Customer");
                 localStorage.setItem('loginuser', JSON.stringify(resp.data));
                 if (payload.role == 'landlord') {
                     navigate('/landlorddashboard');
@@ -36,7 +33,6 @@ function Login() {
                 }
             })
             .catch(error => {
-                //console.log(error.response.data);
                 setMessage(error.response.data);
 
             });
@@ -56,7 +52,7 @@ function Login() {
                     <br></br>
                     <h2 class="text-center card-title">Login</h2>
                     {
-                        message && <h3 style={{ color: "red" }}>{message}</h3>
+                        message && <h6 style={{ color: "red" }}>{message}</h6>
                     }
                     <div className='form-group'>
                         <label htmlFor='username'>Username</label>

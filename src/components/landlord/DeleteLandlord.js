@@ -19,7 +19,7 @@ function DeleteLandlord() {
        deleteLandlord(id).then(resp => {
             alert("Landlord deleted with id: " + id);
             navigate("/landlord/all");
-        });
+        }).catch(error=> alert(error.response.data));
     }
     return (
         <div class="row">

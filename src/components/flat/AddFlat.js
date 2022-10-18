@@ -3,7 +3,7 @@ import axios from 'axios'
 import addflatimg from '../assets/flat.jpg';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
 import { useNavigate } from 'react-router-dom';
-import { addFlat } from '../../service/FlatService';
+import { addFlat, validPincode } from '../../service/FlatService';
 import Footer from '../headerfooter/Footer';
 
 function AddFlat() {
@@ -25,6 +25,15 @@ function AddFlat() {
         let errors = {};
         if (!fCost || !fFlatType || !fHouseNo || !fBuilding || !fStreet || !fCity || !fState || !fPincode || !fCountry) {
             errors['nullError'] = "This field is reqiured"
+        }
+        if(fCost<0){
+            errors['costError'] ="Cost cannot be negative"
+        }
+        if(fHouseNo<0){
+            errors['houseError'] = "Enter valid house no"
+        }
+        if(!validPincode.test(fPincode)){
+            errors['pincodeError'] = "Enter valid pincode"
         }
       
         setFormErrors(errors);
@@ -72,22 +81,21 @@ function AddFlat() {
                 <label htmlFor='fCost'>Cost</label>
                 <input type="text" className="form-control" name="fCost" id="fCost" placeholder="Enter Flat Cost" pattern='/^\d+$/' aria-errormessage='Invalid cost'
                     onChange={(event) => setFCost(event.target.value)} value={fCost} />
-                {
-                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                    {
+                    formErrors.costError && <div style={{ color: "red" }}>{formErrors.costError}</div>
                 }
+               
             </div>
 
             <div className="form-group">
                 <label htmlFor='fFlatType'>Flat Type</label>
                 <select class="select form-control " name="fFlatType" id="fFlatType" placeholder="Enter Flat Type" onChange={(event) => setFFlatType(event.target.value)} value={fFlatType} >
-                <option value="#">Select flat type</option>
+                <option value="">Select flat type</option>
                                 <option value="2-BHK">2-BHK</option>
                                 <option value="3-BHK">3-BHK</option>
                                 <option value="4-BHK">4-BHK</option>            
                    </select>
-                {
-                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                }
+                
             </div>
 
             {/* <div className="form-group">
@@ -109,9 +117,10 @@ function AddFlat() {
                         <input type="text" className="form-control" name="fHouseNo" id="fHouseNo" placeholder="Enter House no."
 
                             onChange={(event) => setFHouseNo(event.target.value)} value={fFlatAddress.houseNo} />
-                        {
-                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                        }
+                            {
+                    formErrors.houseError && <div style={{ color: "red" }}>{formErrors.houseError}</div>
+                }
+                        
                     </div>
 
                     <div class="col-4">
@@ -119,18 +128,14 @@ function AddFlat() {
                         <input type="text" className="form-control" name="ffBuilding" id="fBuilding" placeholder="Enter building"
 
                             onChange={(event) => setFBuilding(event.target.value)} value={fFlatAddress.building} />
-                        {
-                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                        }
+                        
                     </div>
 
                     <div class="col-4">
                         <label htmlFor='fStreet'>Street</label>
                         <input type="text" className="form-control" name="fStreet" id="fStreet" placeholder="Enter Street"
                             onChange={(event) => setFStreet(event.target.value)} value={fFlatAddress.street} />
-                        {
-                            formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                        }
+                       
                     </div>
                 </div>
 
@@ -145,39 +150,34 @@ function AddFlat() {
                                 <option value="Mumbai">Mumbai</option>
                                 <option value="Nagpur">Nagpur</option>
                                 </select>
-                            {
-                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                            }
+                           
                         </div>
                         <div class="col-4">
                             <label htmlFor='fState'>State</label>
                             <select class="select form-control" name="fState" id="fState" onChange={(event) => setFState(event.target.value)} value={fFlatAddress.state}>
-                                <option value="#">Select State</option>
+                                <option value="">Select State</option>
                                 <option value="Punjab">Punjab</option>
                                 <option value="Maharashtra">Maharashtra</option>
                                 </select> 
-                            {
-                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                            }
+                           
                         </div>
                         <div class="col-4">
                             <label htmlFor='fPincode'>Pincode</label>
                             <input type="text" className="form-control" name="fPincode" id="fPincode" placeholder="Enter Pincode"
 
                                 onChange={(event) => setFPincode(event.target.value)} value={fFlatAddress.pincode} />
-                            {
-                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                            }
+                                {
+                    formErrors.pincodeError && <div style={{ color: "red" }}>{formErrors.pincodeError}</div>
+                }
+                           
                         </div>
                     </div>
                     <label htmlFor='fCountry'>Country</label>
                     <select class="select form-control " name="fCountry" id="fCountry" placeholder="Select Country" onChange={(event) => setFCountry(event.target.value)} value={fFlatAddress.country}    >
-                                <option value="#">Select country</option>
+                                <option value="">Select country</option>
                                 <option value="India">India</option>
                                  </select>
-                    {
-                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                    }
+                   
                 </div>
             </div>
             {/* <div class="form-group">
@@ -192,6 +192,9 @@ function AddFlat() {
             </div> */}
             <div>
                 <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                {
+                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                }
 
             </div>
             <br></br>

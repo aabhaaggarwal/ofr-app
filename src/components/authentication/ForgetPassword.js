@@ -65,9 +65,7 @@ function ForgetPassword() {
                             <form>
                                 <div class="form-group">
                                     <input type="email" class="form-control" placeholder="Enter your email" id="fEmail" name="fEmail" value={fEmail} onChange={(event) => setFEmail(event.target.value)} required />
-                                    {
-                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                    }
+                                  
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" id="fRole" name="fRole" value={fRole} onChange={(event) => setFRole(event.target.value)}>
@@ -76,28 +74,25 @@ function ForgetPassword() {
                                         <option value="landlord">Landlord</option>
                                         <option value="tenant">Tenant</option>
                                     </select>
-                                    {
-                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                    }
+                                 
                                 </div>
 
                                 <div class="form-group">
                                     <input type="password" class="form-control" placeholder="Enter new password" id="fPassword" name="fPassword" value={fPassword} onChange={(event) => setFPassword(event.target.value)} required />
-                                    {
-                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                    }
+                                   
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" placeholder="Confirm new password" id="fCPassword" name="fCPassword" value={fCPassword} onChange={(event) => setFCPassword(event.target.value)} required />
-                                    {
-                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                    }
+                                   
                                     {
                                         formErrors.passwordError && <div style={{ color: "red" }}>{formErrors.passwordError}</div>
                                     }
                                 </div>
                                 <div class="form-group">
                                     <button type="button" class="btn btn-dark btn-block" onClick={handleSubmit}>Reset Password</button>
+                                    {
+                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                                    }
 
                                 </div>
                             </form>

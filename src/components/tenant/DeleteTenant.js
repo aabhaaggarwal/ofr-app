@@ -20,7 +20,7 @@ function DeleteTenant() {
     deleteTenant(id).then((resp) => {
       alert("Tenant deleted with id: " + id);
       navigate("/tenant/all");
-    });
+    }).catch(error=> alert(error.response.data));
   };
   return (
     <div class="row">

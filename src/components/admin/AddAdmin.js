@@ -95,9 +95,7 @@ function AddAdmin() {
                             {
                                 formErrors.aUserNameError && <div style={{ color: "red" }}>{formErrors.aUserNameError}</div>
                             }
-                            {
-                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                            }
+                            
                         </div>
                         <div class="form-group">
                             <div className="row">
@@ -108,9 +106,7 @@ function AddAdmin() {
                                     {
                                         formErrors.aFirstNameError && <div style={{ color: "red" }}>{formErrors.aFirstNameError}</div>
                                     }
-                                    {
-                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                    }
+                                   
                                 </div>
                                 <div class="col">
 
@@ -119,9 +115,7 @@ function AddAdmin() {
                                     {
                                         formErrors.aLastNameError && <div style={{ color: "red" }}>{formErrors.aLastNameError}</div>
                                     }
-                                    {
-                                        formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                    }
+                                   
                                 </div>
                             </div>
                         </div>
@@ -132,9 +126,7 @@ function AddAdmin() {
                             {
                                 formErrors.aEmailError && <div style={{ color: "red" }}>{formErrors.aEmailError}</div>
                             }
-                            {
-                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                            }
+                           
                         </div>
 
                         <div class="form-group">
@@ -144,9 +136,7 @@ function AddAdmin() {
                             {
                                 formErrors.aMobileError && <div style={{ color: "red" }}>{formErrors.aMobileError}</div>
                             }
-                            {
-                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                            }
+                            
                         </div>
                         <div class="row form-group">
                             <div class="col">
@@ -156,14 +146,15 @@ function AddAdmin() {
                                 {
                                     formErrors.aPasswordError && <div style={{ color: "red" }}>{formErrors.aPasswordError}</div>
                                 }
-                                {
-                                    formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
-                                }
+                               
                             </div>
                         </div>
                         <br></br>
                         <div class="form-group">
                             <button onClick={handleSubmit} className="btn btn-dark btn-block">Submit</button>
+                            {
+                                formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
+                            }
                         </div>
                         <div class="form-group">
                             <Link to={"/login"} type="button" class="btn btn-link text-primary">Already Have an account? Login
