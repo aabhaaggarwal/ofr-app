@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import deleteimg from '../assets/delete.gif';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
 import { deleteFlat, viewFlatById } from '../../service/FlatService';
+import Footer from '../headerfooter/Footer';
 
 function DeleteFlat() {
     const [flat, setFlat] = useState(null);
@@ -107,6 +108,11 @@ function DeleteFlat() {
             </div>
         </div>
         </div>
+        <div>
+            
+                <Footer/>
+            
+            </div>
         </div>
 
     )

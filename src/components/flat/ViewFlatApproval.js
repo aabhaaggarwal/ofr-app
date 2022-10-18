@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import flatimage from '../assets/flat.jpg';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
 import { updateFlat, viewFlatById } from '../../service/FlatService';
+import Footer from '../headerfooter/Footer';
 
 
 function ViewFlatApproval() {
@@ -132,6 +133,9 @@ function ViewFlatApproval() {
 
         </div>
         </div>
+        <div>
+                <Footer/>
+            </div>
         </div>
 
     )

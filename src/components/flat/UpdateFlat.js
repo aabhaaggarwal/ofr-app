@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { updateFlat, viewFlatById } from '../../service/FlatService';
 import updateflat from '../assets/update.jpg';
+import Footer from '../headerfooter/Footer';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
 function UpdateFlat() {
 
@@ -66,7 +67,7 @@ function UpdateFlat() {
             .then(resp => {
                 alert("Flat updated");
                 navigate("/myproperties/"+resp.data.landlord.userId);
-            });
+            }).catch(errors=>alert(errors.response.data)) ;
     }
     return (
         <div>
@@ -90,7 +91,7 @@ function UpdateFlat() {
 
             <div className="form-group">
                 <label htmlFor='fCost'>Cost</label>
-                <input type="text" className="form-control" name="fCost" id="fCost" placeholder="Enter Flat Cost"
+                <input type="text" className="form-control" name="fCost" id="fCost" placeholder="Enter Flat Cost" pattern='/^\d+$/'
                     onChange={(event) => setFCost(event.target.value)} value={fCost} />
             </div>
 
@@ -189,7 +190,11 @@ function UpdateFlat() {
         </div>
         </div>
         </div>
+        <div>
+                <Footer/>
+            </div>
         </div>
+        
        
     )
 }

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { updateFlat, viewFlatById } from '../../service/FlatService';
 import updateflat from '../assets/update.jpg';
+import Footer from '../headerfooter/Footer';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
 function AdminUpdateFlat() {
 
@@ -191,6 +192,9 @@ function AdminUpdateFlat() {
         </div>
         </div>
        </div>
+       <div>
+                <Footer/>
+            </div>
        </div>
        
     )
