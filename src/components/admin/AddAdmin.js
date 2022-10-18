@@ -66,7 +66,7 @@ function AddAdmin() {
                     .then(resp => {
                         alert("Admin added" + resp.data.userId);
                         //navigate("/landlord/all");
-                    });
+                    }).catch(error=> alert(error.response.data));
             }
         }
 
@@ -148,7 +148,7 @@ function AddAdmin() {
                         <div class="form-group">
 
                             <input type="text" className="form-control" name="lEmail" id="lEmail" placeholder="Enter your email"
-                                onChange={(event) => setAEmail(event.target.value)} value={aEmail} />
+                                onChange={(event) => setAEmail(event.target.value)} value={aEmail} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
                             {
                                 formErrors.aEmailError && <div style={{ color: "red" }}>{formErrors.aEmailError}</div>
                             }
@@ -157,7 +157,7 @@ function AddAdmin() {
                         <div class="form-group">
 
                             <input type="tel" className="form-control" name="lMobile" id="lMobile" placeholder="Enter phone number"
-                                onChange={(event) => setAMobile(event.target.value)} value={aMobile} />
+                                onChange={(event) => setAMobile(event.target.value)} value={aMobile} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
                             {
                                 formErrors.aMobileError && <div style={{ color: "red" }}>{formErrors.aMobileError}</div>
                             }
@@ -166,7 +166,7 @@ function AddAdmin() {
                             <div class="col">
 
                                 <input type="password" className="form-control" name="lPassword" id="lPassword" placeholder="Create password"
-                                    onChange={(event) => setAPassword(event.target.value)} value={aPassword} />
+                                    onChange={(event) => setAPassword(event.target.value)} value={aPassword} pattern="[A-Za-z]{3}" />
                                 {
                                     formErrors.aPasswordError && <div style={{ color: "red" }}>{formErrors.aPasswordError}</div>
                                 }
