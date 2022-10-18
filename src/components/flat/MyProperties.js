@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
+import { myProperties } from '../../service/FlatService';
 
 
 
@@ -10,7 +11,7 @@ function MyProperties() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get("http://localhost:8080/flat/landlord/"+id).then(resp => setFlats(resp.data));
+    myProperties(id).then(resp => setFlats(resp.data));
   }, []);
 
   return (

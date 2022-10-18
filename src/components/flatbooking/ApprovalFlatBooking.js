@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
+import { viewAllApproval } from '../../service/FlatBookingService';
 
 function ApprovalFlatBooking() {
     const [flatBookings,setFlatBookings] = useState([]);
 
     useEffect(()=>
     {
-        axios.get("http://localhost:8080/flatbooking/approval").then(resp=>
+        viewAllApproval().then(resp=>
         setFlatBookings(resp.data));
     },[]);
 

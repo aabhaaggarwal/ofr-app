@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import NavbarTenant from '../headerfooter/NavbarTenant';
+import { viewAllByTenant } from '../../service/FlatBookingService';
 
 function ViewAllByTenant() {
     const [flatBookings,setFlatBookings] = useState([]);
@@ -10,7 +11,7 @@ function ViewAllByTenant() {
 
     useEffect(()=>
     {
-        axios.get("http://localhost:8080/flatbooking/tenant/"+id).then(resp=>
+        viewAllByTenant(id).then(resp=>
         setFlatBookings(resp.data));
     },[id]);
 

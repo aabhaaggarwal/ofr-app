@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom'
 import axios from "axios";
 import flatimg from "../assets/card222.jpg";
 import NavbarTenant from "../headerfooter/NavbarTenant";
+import { flatSearch } from "../../service/FlatService";
 
 
 function ViewAllFlats() {
@@ -11,12 +12,12 @@ function ViewAllFlats() {
     const [city, setCity] = useState('');
 
     useEffect(() => {
-        axios.get("http://localhost:8080/flat/search").then(resp => setFlats(resp.data));
+        flatSearch().then(resp => setFlats(resp.data));
     }, []);
 
-    const selectCity = () => {
-        axios.get("http://localhost:8080/flat/city/" + city).then(resp => setFlats(resp.data));
-    }
+    // const selectCity = () => {
+    //     axios.get("http://localhost:8080/flat/city/" + city).then(resp => setFlats(resp.data));
+    // }
 
     return (
         <div>
@@ -41,7 +42,7 @@ function ViewAllFlats() {
                                 city != '' ?
                                     <div class="card-deck row">
                                         {
-                                            flats.filter(f => f.flatAddress.city === city).map(f => 
+                                            flats.filter(f => f.flatAddress.city === city).filter(f => f.availability === 'available').map(f => 
                                                 <div class="col-4 mb-5">
                                                     <div class="card ">
                                                         <img class="card-img-top " src={flatimg} />
@@ -59,7 +60,7 @@ function ViewAllFlats() {
                                     </div>
                                     : <div class="card-deck row">
                                         {
-                                            flats.map(f => 
+                                            flats.filter(f => f.availability === 'available').map(f => 
                                                 <div class="col-4 mb-5">
                                                     <div class="card ">
                                                         <img class="card-img-top " src={flatimg} />

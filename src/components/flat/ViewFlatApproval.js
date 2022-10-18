@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import flatimage from '../assets/flat.jpg';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
+import { updateFlat, viewFlatById } from '../../service/FlatService';
 
 
 function ViewFlatApproval() {
@@ -26,7 +27,7 @@ function ViewFlatApproval() {
 
     useEffect(() => {
 
-        axios.get("http://localhost:8080/flat/" + id).then(resp => {
+        viewFlatById(id).then(resp => {
             setFId(resp.data.flatId);
             setFCost(resp.data.cost);
             setFFlatType(resp.data.flatType);
@@ -65,7 +66,7 @@ function ViewFlatApproval() {
             },
             landlordId: fLandlordId
         }
-        axios.put("http://localhost:8080/flat/update", payload).then(resp => {
+        updateFlat(payload).then(resp => {
             alert("flat " + resp.data.status);
             navigate("/flat/approval/all");
         });

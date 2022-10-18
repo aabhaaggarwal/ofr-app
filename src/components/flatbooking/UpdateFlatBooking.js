@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
+import { updateFlatBooking, viewFlatBookingById } from '../../service/FlatBookingService';
 
 function UpdateFlatBooking() {
 
@@ -17,7 +18,7 @@ function UpdateFlatBooking() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/flatbooking/"+id).then(resp => {
+        viewFlatBookingById(id).then(resp => {
             setBNo(resp.data.bookingNo);
             setBFrom(resp.data.bookingFrom);
             setBTo(resp.data.bookingTo);
@@ -38,7 +39,7 @@ function UpdateFlatBooking() {
             tenantId: bTenantId,
             status:bStatus
         }
-        axios.put("http://localhost:8080/flatbooking/update", payload).then(resp => {
+        updateFlatBooking(payload).then(resp => {
             alert("FlatBooking updated");
             navigate("/flatbooking/all");
      } );

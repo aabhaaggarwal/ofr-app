@@ -69,14 +69,14 @@ function App() {
         <Route path="/flat/approval/:id" element={<ViewFlatApproval />}></Route>
         <Route path="/flatbooking/approval/landlord/:id" element={<ViewFlatBookingApprovalLandlord />}></Route>
         <Route path="/flatbooking/book/:id" element={<RequestBooking />}></Route>
-        <Route path="/flatbooking/delete/:id" element={<DeleteFlatBooking/>}></Route>
+        <Route path="/flatbooking/delete/:id" element={<DeleteFlatBooking />}></Route>
         <Route path="/landlord/all" element={<ViewAllLandlord />}></Route>
         <Route path="/landlord/details/:id" element={<ProfileLandlord />}></Route>
         <Route path="/landlord/delete/:id" element={<DeleteLandlord />}></Route>
         <Route path="/flat/details/:id" element={<ViewFlatById />} />
         <Route path="/flat/all" element={<ViewAllFlats />} />
         <Route path="/myproperty/:id" element={<ViewMyProperty />} />
-        <Route path="/myproperties/:id" element={<MyProperties/>} />
+        <Route path="/myproperties/:id" element={<MyProperties />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/navbar" element={<Navbar />} />
         <Route path="/navbar/tenant" element={<NavbarTenant />} />
@@ -92,18 +92,18 @@ function App() {
         <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
         <Route path="/landlord/update/:id" element={<UpdateLandlord />}></Route>
         <Route path="/tenant/update/:id" element={<UpdateTenant />}></Route>
-        <Route path='/admin/details/:id' element={<AdminProfile/>}></Route>
-       < Route path="/flat/delete/:id" element={<DeleteFlat />}></Route>
+        <Route path='/admin/details/:id' element={<AdminProfile />}></Route>
+        < Route path="/flat/delete/:id" element={<DeleteFlat />}></Route>
         <Route path="/admin/update/:id" element={<UpdateAdmin />}></Route>
         <Route path="admin/flat/details/:id" element={<AdminViewFlatById />} />
         <Route path='/admin/add' element={<AddAdmin />}></Route>
         <Route path='/admin/flat/all' element={<AdminViewAllFlats />}></Route>
- <Route path="/admin/flat/update/:id" element={<AdminUpdateFlat/>}></Route>
-<Route path="/aboutus" element={<AboutUs/>}></Route>
-<Route path="/contactus" element={<ContactUs />}></Route>
+        <Route path="/admin/flat/update/:id" element={<AdminUpdateFlat />}></Route>
+        <Route path="/aboutus" element={<AboutUs />}></Route>
+        <Route path="/contactus" element={<ContactUs />}></Route>
 
-<Route path="/flat/update/:id" element ={<UpdateFlat/>}/>
-<Route path="/flat/add" element ={<AddFlat/>}/>
+        <Route path="/flat/update/:id" element={<UpdateFlat />} />
+        <Route path="/flat/add" element={<AddFlat />} />
 
 
       </Routes>

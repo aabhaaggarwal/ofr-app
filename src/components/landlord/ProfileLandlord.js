@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams, userParams } from 'react-router-dom';
 import proimg from '../assets/profileimage.gif';
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
+import { viewLandlordById } from "../../service/LandlordService";
 
 function FetchLandlord() {
 
@@ -10,7 +11,7 @@ function FetchLandlord() {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/landlord/" + id).then(resp => setLandlord(resp.data));
+        viewLandlordById(id).then(resp => setLandlord(resp.data));
     }, [id]);
 
     return (

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import update from '../assets/upgrade.jpg';
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
+import { updateLandlord, viewLandlordById } from "../../service/LandlordService";
 
 function UpdateLandlord() {
     const [lId, setLId] = useState('');
@@ -20,7 +21,7 @@ function UpdateLandlord() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/landlord/" + id).then(resp => {
+        viewLandlordById(id).then(resp => {
             setLId(resp.data.userId);
             setLUserName(resp.data.username);
             setLPassword(resp.data.password);
@@ -47,7 +48,7 @@ function UpdateLandlord() {
             gender: lGender,
             mobile: lMobile
         }
-        axios.put("http://localhost:8080/landlord/update", payload)
+        updateLandlord(payload)
             .then(resp => {
                 alert("Landlord Updated with id "+id);
                 navigate("/landlord/details/"+id);

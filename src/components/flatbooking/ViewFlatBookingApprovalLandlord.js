@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import flatimage from '../assets/flat-icon-aimation.gif';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
+import { updateFlatBooking, viewFlatBookingById } from '../../service/FlatBookingService';
 
 function ViewFlatBookingApprovalLandlord() {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ function ViewFlatBookingApprovalLandlord() {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/flatbooking/" + id).then(resp => {
+        viewFlatBookingById(id).then(resp => {
             setBFlatId(resp.data.flat.flatId);
             setBMembers(resp.data.members);
             setBNo(resp.data.bookingNo);
@@ -39,7 +40,7 @@ function ViewFlatBookingApprovalLandlord() {
             tenantId: bTenantId,
             status: event.target.name
         }
-        axios.put("http://localhost:8080/flatbooking/update", payload).then(resp => {
+        updateFlatBooking(payload).then(resp => {
             alert("flatbooking " + resp.data.status);
             navigate("/flatbooking/approval/landlord/all");
         });

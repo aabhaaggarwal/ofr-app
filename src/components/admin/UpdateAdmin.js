@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import uppic from '../assets/upgrade.jpg';
 import NavbarAdmin from "../headerfooter/NavbarAdmin";
+import { updateAdmin, viewAdminById } from "../../service/AdminService";
 
 function UpdateAdmin() {
     const [aId, setAId] = useState('');
@@ -18,7 +19,7 @@ function UpdateAdmin() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/admin/" + id).then(resp => {
+        viewAdminById(id).then(resp => {
             setAId(resp.data.userId);
             setAUserName(resp.data.username);
             setAPassword(resp.data.password);
@@ -41,7 +42,7 @@ function UpdateAdmin() {
             role: aRole,
             mobile: aMobile
         }
-        axios.put("http://localhost:8080/admin/update", payload)
+        updateAdmin(payload)
             .then(resp => {
                 alert("Admin Updated with id " + id);
                 navigate("/admin/details/"+id);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import profile from '../assets/sign-up-concept-illustration_114360-7885.jpg';
+import { addAdmin } from "../../service/AdminService";
 
 function AddAdmin() {
     const [aId, setAId] = useState('');
@@ -61,7 +62,7 @@ function AddAdmin() {
 
             }
             if (aRole == 'admin') {
-                axios.post("http://localhost:8080/admin/add", payload)
+                addAdmin(payload)
                     .then(resp => {
                         alert("Admin added" + resp.data.userId);
                         //navigate("/landlord/all");

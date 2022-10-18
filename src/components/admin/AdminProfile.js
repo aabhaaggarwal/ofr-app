@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams, userParams } from 'react-router-dom';
 import image from '../assets/admin.jpg';
 import NavbarAdmin from "../headerfooter/NavbarAdmin";
+import { viewAdminById } from "../../service/AdminService";
 
 function AdminProfile() {
 
@@ -10,7 +11,7 @@ function AdminProfile() {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/admin/" + id).then(resp => setAdmin(resp.data));
+        viewAdminById(id).then(resp => setAdmin(resp.data));
     }, [id]);
 
     return (

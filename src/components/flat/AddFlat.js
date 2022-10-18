@@ -3,6 +3,8 @@ import axios from 'axios'
 import addflatimg from '../assets/flat.jpg';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
 import { useNavigate } from 'react-router-dom';
+import { addFlat } from '../../service/FlatService';
+
 function AddFlat() {
     const [fCost, setFCost] = useState('');
     const [fFlatType, setFFlatType] = useState('');
@@ -78,7 +80,7 @@ function AddFlat() {
                 },
                 landlordId: user.userId
             }
-            axios.post("http://localhost:8080/flat/save", payload)
+            addFlat(payload)
                 .then(resp => {
                     alert("New Flat Added with id" + resp.data.flatId);
                   

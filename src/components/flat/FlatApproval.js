@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
+import { viewAllApproval } from '../../service/FlatService';
 
 
 
@@ -10,7 +11,7 @@ function FlatApproval() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get("http://localhost:8080/flat/approval").then(resp => setFlats(resp.data));
+    viewAllApproval().then(resp => setFlats(resp.data));
   }, []);
 
   return (

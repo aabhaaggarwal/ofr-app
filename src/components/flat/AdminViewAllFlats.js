@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
+import { viewAllFlats } from '../../service/FlatService';
 
 
 
@@ -10,7 +11,7 @@ function AdminViewAllFlats() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get("http://localhost:8080/flat/all").then(resp => setFlats(resp.data));
+    viewAllFlats().then(resp => setFlats(resp.data));
   }, []);
 
   return (

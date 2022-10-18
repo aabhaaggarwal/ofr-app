@@ -11,12 +11,13 @@ import Navbar from "../headerfooter/Navbar";
 import NavbarTenant from "../headerfooter/NavbarTenant";
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
 import Footer from "../headerfooter/Footer";
+import { flatSearch } from "../../service/FlatService";
 
 function Homepage() {
     const [flats, setFlats] = useState([]);
     const user = JSON.parse(localStorage.getItem("loginuser"));
     useEffect(() => {
-        axios.get("http://localhost:8080/flat/search").then(resp => setFlats(resp.data));
+        flatSearch().then(resp => setFlats(resp.data));
     }, []);
 
     return (

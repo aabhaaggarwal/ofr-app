@@ -3,13 +3,14 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import flatimg  from '../assets/15400_Apartments_for_rent_in_Dubai_Marina_20151215122124.jpg';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
+import { viewFlatById } from '../../service/FlatService';
 
 function ViewMyProperty() {
     const [flat, setFlat] = useState(null);
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/flat/" + id).then(resp => setFlat(resp.data));
+        viewFlatById(id).then(resp => setFlat(resp.data));
     }, [id]);
     return (
         <div>

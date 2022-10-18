@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import NavbarAdmin from "../headerfooter/NavbarAdmin";
+import { viewAllLandlord } from "../../service/LandlordService";
 
 function ViewAllLandlord() {
 
     const [landlords, setLandlords] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/landlord/all").then(resp => setLandlords(resp.data));
+        viewAllLandlord().then(resp => setLandlords(resp.data));
     }, []);
 
     return (

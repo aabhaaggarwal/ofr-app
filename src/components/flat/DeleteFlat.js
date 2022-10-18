@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import deleteimg from '../assets/delete.gif';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
+import { deleteFlat, viewFlatById } from '../../service/FlatService';
 
 function DeleteFlat() {
     const [flat, setFlat] = useState(null);
@@ -11,11 +12,11 @@ function DeleteFlat() {
 
 
     useEffect(() => {
-        axios.get("http://localhost:8080/flat/" + id).then(resp => setFlat(resp.data));
+        viewFlatById(id).then(resp => setFlat(resp.data));
     }, [id]);
 
     const handleDelete = () => {
-        axios.delete("http://localhost:8080/flat/" + id).then(resp => {
+        deleteFlat(id).then(resp => {
             alert("Flat deleted");
             navigate("/admin/flat/all");
 

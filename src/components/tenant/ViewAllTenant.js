@@ -2,13 +2,14 @@ import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
+import { viewAllTenant } from '../../service/TenantService';
 // viewalltenant
 function ViewAllTenant() {
 
     const [tenants, setTenants] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/tenant/all").then(resp => setTenants (resp.data));
+        viewAllTenant().then(resp => setTenants (resp.data));
           },[]);
     
           return (

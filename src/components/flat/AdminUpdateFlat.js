@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { updateFlat, viewFlatById } from '../../service/FlatService';
 import updateflat from '../assets/update.jpg';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
 function AdminUpdateFlat() {
@@ -24,7 +25,7 @@ function AdminUpdateFlat() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/flat/" + id).then(resp => {
+        viewFlatById(id).then(resp => {
             setFId(resp.data.flatId);
             setFCost(resp.data.cost);
             setFFlatType(resp.data.flatType);
@@ -61,7 +62,7 @@ function AdminUpdateFlat() {
             },
              landlordId: fLandlordId
         }
-        axios.put("http://localhost:8080/flat/update", payload)
+        updateFlat(payload)
             .then(resp => {
                 alert("Flat updated");
                navigate("/admin/flat/all");

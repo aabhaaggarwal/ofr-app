@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import NavbarAdmin from "../headerfooter/NavbarAdmin";
 import dlt from '../assets/delete.gif';
+import { deleteTenant, viewTenantById } from "../../service/TenantService";
 
 function DeleteTenant() {
   const [tenant, setTenant] = useState(null);
@@ -10,13 +11,12 @@ function DeleteTenant() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/tenant/" + id)
+  viewTenantById(id)
       .then((resp) => setTenant(resp.data));
   }, [id]);
 
   const handleDelete = () => {
-    axios.delete("http://localhost:8080/tenant/" + id).then((resp) => {
+    deleteTenant(id).then((resp) => {
       alert("Tenant deleted with id: " + id);
       navigate("/tenant/all");
     });

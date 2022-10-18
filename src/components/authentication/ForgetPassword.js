@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import forgetimg from "../assets/forgetpassword.jpg";
+import { forgetPassword } from "../../service/AuthenticationService";
 
 function ForgetPassword(){
 
@@ -20,7 +21,7 @@ function ForgetPassword(){
 
         }
 
-        axios.post("http://localhost:8080/forgetpassword", payload)
+        forgetPassword(payload)
         .then(resp => {
             alert("New password set for id: " + resp.data.userId);
             navigate("/login");

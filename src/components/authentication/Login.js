@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { loginUser } from '../../service/AuthenticationService';
 import login from '../assets/login.jpg';
 import Navbar from '../headerfooter/Navbar';
 function Login() {
@@ -17,7 +18,7 @@ function Login() {
             password: password,
             role: role
         }
-        axios.post("http://localhost:8080/login", payload)
+        loginUser(payload)
             .then(resp => {
                 //console.log(resp);
                 //setMessage('');

@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import flatimage from '../assets/flat-icon-aimation.gif';
 import NavbarAdmin from "../headerfooter/NavbarAdmin";
+import { deleteFlatBooking, viewFlatBookingById } from "../../service/FlatBookingService";
 
 function DeleteFlatBooking() {
     const [flatBooking, setFlatBooking] = useState(null);
@@ -10,11 +11,11 @@ function DeleteFlatBooking() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/flatbooking/" + id).then(resp => setFlatBooking(resp.data));
+        viewFlatBookingById(id).then(resp => setFlatBooking(resp.data));
     }, [id]);
 
     const handleDelete = () => {
-        axios.delete("http://localhost:8080/flatbooking/" + id).then(resp => {
+        deleteFlatBooking(id).then(resp => {
             alert("flatbooking deleted.");
             navigate("/flatbooking/all");
         });

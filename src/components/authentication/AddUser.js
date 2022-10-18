@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import profile from '../assets/sign-up-concept-illustration_114360-7885.jpg';
+import { addLandlord } from "../../service/LandlordService";
+import { addTenant } from "../../service/TenantService";
 
 function AddUser() {
     const [lUserName, setLUserName] = useState('');
@@ -69,14 +71,14 @@ function AddUser() {
 
             }
             if (lRole == 'landlord') {
-                axios.post("http://localhost:8080/landlord/save", payload)
+                addLandlord(payload)
                     .then(resp => {
                         alert("New landlord added with id: " + resp.data.userId);
                         navigate("/landlord/all");
                     });
             }
             if (lRole == 'tenant') {
-                axios.post("http://localhost:8080/tenant/save", payload)
+                addTenant(payload)
                     .then(resp => {
                         alert("New tenant added with id: " + resp.data.userId);
                         navigate("/tenant/all");

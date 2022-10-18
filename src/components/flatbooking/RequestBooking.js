@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import NavbarTenant from '../headerfooter/NavbarTenant';
+import { addFlatBooking } from '../../service/FlatBookingService';
 
 function RequestBooking() {
 
@@ -22,7 +23,7 @@ function RequestBooking() {
             tenantId: user.userId
         }
 
-        axios.post("http://localhost:8080/flatbooking/book", payload).then(resp => {
+        addFlatBooking(payload).then(resp => {
             alert("FlatRequested for booking");
             navigate("/flatbooking/tenant/" + user.userId);
 

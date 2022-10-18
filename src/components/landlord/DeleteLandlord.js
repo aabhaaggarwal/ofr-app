@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import dlt from '../assets/delete.gif';
 import NavbarAdmin from "../headerfooter/NavbarAdmin";
+import { deleteLandlord, viewLandlordById } from "../../service/LandlordService";
 
 function DeleteLandlord() {
     const [landlord, setLandlord] = useState(null);
@@ -10,11 +11,11 @@ function DeleteLandlord() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8080/landlord/" + id).then(resp => setLandlord(resp.data));
+        viewLandlordById(id).then(resp => setLandlord(resp.data));
     }, [id]);
 
     const handleDelete = () => {
-        axios.delete("http://localhost:8080/landlord/" + id).then(resp => {
+       deleteLandlord(id).then(resp => {
             alert("Landlord deleted with id: " + id);
             navigate("/landlord/all");
         });

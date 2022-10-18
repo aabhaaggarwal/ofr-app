@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import flatimage from '../assets/flat-icon-aimation.gif';
 import NavbarTenant from '../headerfooter/NavbarTenant';
+import { viewFlatBookingById } from '../../service/FlatBookingService';
 
 function ViewByBookingNo(){
 
@@ -10,7 +11,7 @@ function ViewByBookingNo(){
     const {id} = useParams();
 
     useEffect(() =>{
-        axios.get("http://localhost:8080/flatbooking/"+id).then(resp => setFlatBooking(resp.data));
+        viewFlatBookingById(id).then(resp => setFlatBooking(resp.data));
     },[id]);
 
     return(

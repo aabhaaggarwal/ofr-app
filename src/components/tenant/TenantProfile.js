@@ -3,14 +3,14 @@ import axios from "axios";
 import { Link, useParams, userParams } from "react-router-dom";
 import proimg from "../assets/profile.png";
 import NavbarTenant from "../headerfooter/NavbarTenant";
+import { viewTenantById } from "../../service/TenantService";
 //TenantProfile
 function TenantProfile() {
   const [tenant, setTenant] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/tenant/" + id)
+    viewTenantById(id)
       .then((resp) => setTenant(resp.data));
   }, [id]);
 
