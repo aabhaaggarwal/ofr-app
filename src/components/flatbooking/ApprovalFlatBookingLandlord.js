@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
 import { viewAllApprovalLandlord } from '../../service/FlatBookingService';
+import Footer from '../headerfooter/Footer';
 
 function ApprovalFlatBookingLandlord() {
     const [flatBookings,setFlatBookings] = useState([]);
@@ -24,7 +25,7 @@ function ApprovalFlatBookingLandlord() {
 </div> 
  
 {  
-        
+    flatBookings.length>0 &&    
 <table class="table table-striped table-light shadow-lg">
   <thead class="thead-dark">
     <tr>
@@ -49,6 +50,18 @@ function ApprovalFlatBookingLandlord() {
 }
   </tbody>
 </table>
+}
+{
+  flatBookings.length==0 && 
+  <div class="card">
+  <div class="card-body">
+    No pending approvals
+  </div>
+</div>
+}
+<br/><br/>
+{
+  <Footer/>
 }
 </div>
 </div>

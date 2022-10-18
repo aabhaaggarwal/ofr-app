@@ -19,11 +19,11 @@ function ApprovalFlatBooking() {
         <div class="col-9">
 <div class="container">
 <div class="mb-3 mt-3">
-<h4>Pending Approvals</h4>
+<h4>Flatbooking Approvals</h4>
 </div> 
  
 {  
-        
+ flatBookings.length>0 &&       
 <table class="table table-striped table-light shadow-lg">
   <thead class="thead-dark">
     <tr>
@@ -48,6 +48,14 @@ function ApprovalFlatBooking() {
 }
   </tbody>
 </table>
+}
+{
+  flatBookings.length==0 &&
+  <div class="card">
+  <div class="card-body">
+    No pending approvals
+  </div>
+</div>
 }
 </div>
 </div>

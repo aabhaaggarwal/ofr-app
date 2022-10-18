@@ -1,16 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "../headerfooter/Footer";
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
 
 function Landlord() {
-
+    const user = JSON.parse(localStorage.getItem("loginuser"));
     return (
         <div>
-
             <div className="container-fluid">
                 <div>
                     <NavbarLandlord/>
-                </div>
+                </div><br/><br/><br/>
                 <section>
                     
                     <div class="row" style={{ backgroundColor: "rgb(255, 179, 0)" }}>
@@ -19,20 +19,20 @@ function Landlord() {
                                 <i class="fa-solid fa-gears fa-5x"></i>
 
                             </p>
-                            <h2 class="text-center font-weight-bold"> My Properties</h2>
+                            <Link to={`/myproperties/${user.userId}`} class="text-center h2 text-dark font-weight-bold"> My Properties</Link>
                         </div>
                         <div class="col-4 mt-5 mb-5">
                             <p class="text-center">
                                 <i class="fa-solid fa-house-medical fa-5x"></i>
                             </p>
-                            <h2 class="text-center font-weight-bold">Add Flat </h2>
+                            <Link to={"/flat/add"} class="text-center h2 text-dark font-weight-bold">Add Flat </Link>
 
                         </div>
                         <div class="col-4 mt-5 mb-5">
                             <p class="text-center">
                                 <i class="fa-sharp fa-solid fa-house-circle-check fa-5x"></i>
                             </p>
-                            <h2 class="text-center font-weight-bold"> Pending Approvals</h2>
+                            <Link to={"/flatbooking/approval/landlord/all"} class="text-center h2 text-dark font-weight-bold"> Pending Approvals</Link>
 
                         </div><br></br><br></br><br></br>
 
@@ -72,7 +72,7 @@ function Landlord() {
                         </div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-warning">Begin To Post Your Property</button>
+                        <Link to={"/flat/add"} class="btn btn-warning">Begin To Post Your Property</Link>
 
                     </div><br></br>
 

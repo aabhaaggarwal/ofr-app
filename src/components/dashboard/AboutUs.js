@@ -47,7 +47,7 @@ function AboutUs() {
                         effectively and inexpensively.</p>
                 </div>
                 </div>
-        </div>
+        </div><br/><br/>
         <div>
             <Footer/>
         </div>

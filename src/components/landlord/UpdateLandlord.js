@@ -51,7 +51,7 @@ function UpdateLandlord() {
         }
         updateLandlord(payload)
             .then(resp => {
-                alert("Landlord Updated with id "+id);
+                alert("Profile details Updated");
                 navigate("/landlord/details/"+id);
             }).catch(error=> alert(error.response.data));
     }

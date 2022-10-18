@@ -23,7 +23,7 @@ function ViewAllFlats() {
     return (
         <div>
         <NavbarTenant/>
-        <div>
+        <div><br/><br/><br/>
             {
                 <main>
                     {
@@ -79,15 +79,23 @@ function ViewAllFlats() {
                                     </div>
 
                             }
-
-
-
-
                         </div>
+
                     }
+                    {
+                    flats.length==0 &&
+                    city=='' &&
+                        <div class="card">
+                    <div class="card-body">
+                      No flats available
+                    </div>
+                  </div>
+                }
                 </main>
+                
             }
-        </div>
+            
+        </div><br/><br/>
         <div>
                 <Footer/>
             </div>

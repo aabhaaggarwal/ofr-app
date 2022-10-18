@@ -83,7 +83,7 @@ function AddFlat() {
             }
             addFlat(payload)
                 .then(resp => {
-                    alert("New Flat Added with id" + resp.data.flatId);
+                    alert("New Flat Addition request sent");
                   
                     navigate("/myproperties/"+resp.data.landlord.userId);
                     

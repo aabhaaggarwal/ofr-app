@@ -14,11 +14,11 @@ import Footer from "../headerfooter/Footer";
 import { flatSearch } from "../../service/FlatService";
 
 function Homepage() {
-    const [flats, setFlats] = useState([]);
+    // const [flats, setFlats] = useState([]);
     const user = JSON.parse(localStorage.getItem("loginuser"));
-    useEffect(() => {
-        flatSearch().then(resp => setFlats(resp.data));
-    }, []);
+    // useEffect(() => {
+    //     flatSearch().then(resp => setFlats(resp.data));
+    // }, []);
 
     return (
         <div>
@@ -32,7 +32,7 @@ function Homepage() {
                         user!=null && 
                         user.role==='admin' && <Navbar/>
                     }
-                    {
+                    {/* {
                         user!=null &&
                         user.role==='tenant' && <NavbarTenant/>
 
@@ -41,7 +41,7 @@ function Homepage() {
                         user!=null &&
                         user.role==='landlord' && <NavbarLandlord/>
                         
-                    }
+                    } */}
                     <div class="row justify-content-center ">
                         <div>
                             <div>
@@ -150,30 +150,30 @@ function Homepage() {
                             </div>
                         </div>
                     </div><br></br><br></br>
-                    <div class="p-5">
-                        {
-                            flats.length > 0 &&
-                            <div>
-                                <h2>Recently Added</h2><br></br><br></br>
-                                <div class="card-deck">
-                                    {
-                                         flats.slice(2).map(f => 
-                                                <div class="card" >
-                                                    <img class="card-img-top" src={img5} alt="Card image cap" />
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">{f.flatType}</h5>
-                                                        <p class="card-text">Price: {f.cost}</p>
-                                                        <p class="card-text"><small class="text-muted">{f.flatAddress.street},{f.flatAddress.city},{f.flatAddress.state}, {f.flatAddress.country}</small></p>
-                                                        <Link to={`/flat/details/${f.flatId}`} className="btn btn-primary">More Details</Link>
+                        {/* <div class="p-5">
+                            {
+                                flats.length > 0 &&
+                                <div>
+                                    <h2>Recently Added</h2><br></br><br></br>
+                                    <div class="card-deck">
+                                        {
+                                            flats.slice(2).map(f => 
+                                                    <div class="card" >
+                                                        <img class="card-img-top" src={img5} alt="Card image cap" />
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{f.flatType}</h5>
+                                                            <p class="card-text">Price: {f.cost}</p>
+                                                            <p class="card-text"><small class="text-muted">{f.flatAddress.street},{f.flatAddress.city},{f.flatAddress.state}, {f.flatAddress.country}</small></p>
+                                                            <Link to={`/flat/details/${f.flatId}`} className="btn btn-primary">More Details</Link>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                        )
-                                    }
+                                            )
+                                        }
+                                    </div>
                                 </div>
-                            </div>
                         }
 
-                    </div>
+                    </div> */}
                 </section>
                 {/* <footer>
                     <div class=" container-fluid bg-dark text-white pt-4 pb-4 ">

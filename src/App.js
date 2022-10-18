@@ -53,6 +53,9 @@ import ViewFlatApproval from './components/flat/ViewFlatApproval';
 import Footer from './components/headerfooter/Footer';
 import AboutUs from './components/dashboard/AboutUs';
 import ContactUs from './components/dashboard/ContactUs';
+import Landlord from './components/dashboard/Landlord';
+import Tenant from './components/dashboard/Tenant';
+import Admin from './components/dashboard/Admin';
 
 function App() {
   return (
@@ -101,6 +104,9 @@ function App() {
         <Route path="/admin/flat/update/:id" element={<AdminUpdateFlat />}></Route>
         <Route path="/aboutus" element={<AboutUs />}></Route>
         <Route path="/contactus" element={<ContactUs />}></Route>
+        <Route path="/landlorddashboard" element={<Landlord />}></Route>
+        <Route path="/tenantdashboard" element={<Tenant/>}></Route>
+        <Route path="/admindashboard" element={<Admin />}></Route>
 
         <Route path="/flat/update/:id" element={<UpdateFlat />} />
         <Route path="/flat/add" element={<AddFlat />} />

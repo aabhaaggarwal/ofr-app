@@ -61,8 +61,16 @@ function MyProperties() {
           </tbody>
 
         </table>}
+        {
+          flats.length==0 &&
+          <div class="card">
+          <div class="card-body">
+            No property added
+          </div>
+        </div>
+        }
 
-    </div>
+    </div><br/><br/>
     <div>
                 <Footer/>
             </div>

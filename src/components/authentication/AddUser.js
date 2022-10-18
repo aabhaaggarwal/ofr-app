@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import profile from '../assets/sign-up-concept-illustration_114360-7885.jpg';
 import { addLandlord } from "../../service/LandlordService";
 import { addTenant } from "../../service/TenantService";
+import Navbar from "../headerfooter/Navbar";
+import Footer from "../headerfooter/Footer";
 
 function AddUser() {
     const [lUserName, setLUserName] = useState('');
@@ -73,15 +75,15 @@ function AddUser() {
             if (lRole == 'landlord') {
                 addLandlord(payload)
                     .then(resp => {
-                        alert("New landlord added with id: " + resp.data.userId);
-                        navigate("/landlord/all");
+                        alert("Account Created successfully");
+                        navigate("/login");
                     }).catch(error=> alert(error.response.data));
             }
             if (lRole == 'tenant') {
                 addTenant(payload)
                     .then(resp => {
-                        alert("New tenant added with id: " + resp.data.userId);
-                        navigate("/tenant/all");
+                        alert("Account Created successfully");
+                        navigate("/login");
                     }).catch(error=> alert(error.response.data));
             }
         }
@@ -91,45 +93,16 @@ function AddUser() {
     return (
 
         <div class="container-fluid">
-
-            <nav class="navbar navbar-expand-md bg-dark text-white navbar-dark fixed-top">
-
-                <a class="navbar-brand" href="#">Flat365</a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-white bg-dark" href="#">My Bookings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white bg-dark" href="#">Post your property</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white bg-dark" href="#" id="navbardrop"
-                                data-toggle="dropdown">
-                                Login/Register
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item bg-light" href="#">For Tenant</a>
-                                <a class="dropdown-item bg-light" href="#">For Landlord</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <Navbar/>
             <br></br>
-            <br></br>
+            <br></br><br/><br/>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 pt-5 ">
                         <img src={profile} alt='profile img' className="d-block w-100 h-100" />
                     </div>
                     <div class="col-md-6 shadow-lg pb-5" style={{ backgroundColor: "rgba(245, 245, 245)" }}>
-                        <h2 class="text-center">Logo</h2>
+                        <h2 class="text-center"><i class="fa fa-home" aria-hidden="true"></i>Flat365</h2>
                         <p class="text-center font-weight-bold text-black-50" style={{ fontSize: "x-large" }}>Create a new
                             account</p>
 
@@ -234,6 +207,7 @@ function AddUser() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
 
     )

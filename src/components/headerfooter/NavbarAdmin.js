@@ -11,10 +11,10 @@ function NavbarAdmin(){
             <nav class="navbar bg-light" >
                 <ul class="nav navbar-nav" style={{height:"590px"}}>
                     <li class="nav-item">
-                        <a class="navbar-brand text-black-50"  href="#"><i class="fa fa-home" aria-hidden="true"></i>Flat365</a>
+                        <Link to={"/admindashboard"} class="navbar-brand text-black-50"><i class="fa fa-home" aria-hidden="true"></i>Flat365</Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-black-50" href="#"> Dashboard </a>
+                        <Link to={"/admindashboard"} class="nav-link text-black-50"> Dashboard </Link>
                     </li>
                     <li class="nav-item">
                         <Link to={`/admin/details/${user.userId}`} class="nav-link text-black-50"> Profile </Link>

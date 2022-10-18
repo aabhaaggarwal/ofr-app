@@ -37,7 +37,25 @@ function Footer(){
                                         <hr width="50%" size="5" class="ms-5 bg" />
                                     </h4>
                                     <ul style={{ listStyle: "none" }}>
-                                        <li class="mb-2"><Link to={"/"} class="text-white">Home</Link></li>
+                                    {
+                                            user==null &&
+                                            <li class="mb-2"><Link to={"/"} class="text-white">Home</Link></li>
+                                        }
+                                           {
+                        user!=null && 
+                        user.role==='admin' &&
+                        <li class="mb-2"><Link to={"/"} class="text-white">Home</Link></li>
+                    }
+                    {
+                        user!=null &&
+                        user.role==='tenant' && <li class="mb-2"><Link to={"/tenantdashboard"} class="text-white">Home</Link></li>
+
+                    }
+                     {
+                        user!=null &&
+                        user.role==='landlord' && <li class="mb-2"><Link to={"/landlorddashboard"} class="text-white">Home</Link></li>
+                        
+                    }
                                         <li class="mb-2"><Link to={"/aboutus"} class="text-white">About</Link></li>
                                         <li class="mb-2"><Link to={"/contactus"} class="text-white">Contact</Link></li>
                                         {

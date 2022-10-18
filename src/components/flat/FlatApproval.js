@@ -63,6 +63,14 @@ function FlatApproval() {
           </tbody>
 
         </table>}
+        {
+          flats.length==0 &&
+          <div class="card">
+          <div class="card-body">
+            No pending approvals
+          </div>
+        </div>
+        }
 
     </div>
     </div>

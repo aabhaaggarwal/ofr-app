@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import profile from '../assets/sign-up-concept-illustration_114360-7885.jpg';
 import { addAdmin } from "../../service/AdminService";
+import Navbar from "../headerfooter/Navbar";
+import Footer from "../headerfooter/Footer";
 
 function AddAdmin() {
     const [aId, setAId] = useState('');
@@ -11,7 +13,6 @@ function AddAdmin() {
     const [aFirstName, setAFirstName] = useState('');
     const [aLastName, setALastName] = useState('');
     const [aEmail, setAEmail] = useState('');
-    const [aRole, setARole] = useState('');
     const [aMobile, setAMobile] = useState('');
 
     const [formErrors, setFormErrors] = useState({});
@@ -33,9 +34,6 @@ function AddAdmin() {
         if (!aLastName) {
             errors['aLastNameError'] = "Last name is required."
         }
-        if (!aRole) {
-            errors['lRoleError'] = "Role is required."
-        }
        
         if (!aEmail) {
             errors['aEmailError'] = "Email is required."
@@ -56,18 +54,15 @@ function AddAdmin() {
                 password: aPassword,
                 firstName: aFirstName,
                 lastName: aLastName,
-                role: aRole,
                 email: aEmail,
                 mobile: aMobile
 
             }
-            if (aRole == 'admin') {
                 addAdmin(payload)
                     .then(resp => {
-                        alert("Admin added" + resp.data.userId);
-                        //navigate("/landlord/all");
+                        alert("Admin account created");
+                        navigate("/login");
                     }).catch(error=> alert(error.response.data));
-            }
         }
 
     }
@@ -75,45 +70,16 @@ function AddAdmin() {
     return (
 
         <div class="container-fluid">
-
-            <nav class="navbar navbar-expand-md bg-dark text-white navbar-dark fixed-top">
-
-                <a class="navbar-brand" href="#">Flat365</a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-white bg-dark" href="#">My Bookings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white bg-dark" href="#">Post your property</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white bg-dark" href="#" id="navbardrop"
-                                data-toggle="dropdown">
-                                Login/Register
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item bg-light" href="#">For Tenant</a>
-                                <a class="dropdown-item bg-light" href="#">For Landlord</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <Navbar/>
             <br></br>
-            <br></br>
+            <br></br><br/><br/>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 pt-5 ">
                         <img src={profile} alt='profile img' className="d-block w-100 h-100" />
                     </div>
                     <div class="col-md-6 shadow-lg pb-5" style={{ backgroundColor: "rgba(245, 245, 245)" }}>
-                        <h2 class="text-center">Logo</h2>
+                        <h2 class="text-center"><i class="fa fa-home" aria-hidden="true"></i>Flat365</h2>
                         <p class="text-center font-weight-bold text-black-50" style={{ fontSize: "x-large" }}>Create a new
                             account</p>
 
@@ -177,13 +143,14 @@ function AddAdmin() {
                             <button onClick={handleSubmit} className="btn btn-dark btn-block">Submit</button>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-link text-primary">Already Have an account? Login
-                                Here</button>
+                            <Link to={"/login"} type="button" class="btn btn-link text-primary">Already Have an account? Login
+                                Here</Link>
                         </div>
 
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
 
     )

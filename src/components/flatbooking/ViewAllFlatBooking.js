@@ -55,6 +55,14 @@ function ViewAllFlatBooking() {
           </tbody>
         </table>
 }
+{
+  flatBookings.length==0 &&
+  <div class="card">
+  <div class="card-body">
+    No flats booked 
+  </div>
+</div>
+}
       </div>
       </div>
       </div>

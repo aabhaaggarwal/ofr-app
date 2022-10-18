@@ -35,9 +35,16 @@ import logoutimg from "../assets/logout.jpg";
     
     <div class="col">
       {
-        userlogin.role=='admin' ? <Link to={`/admin/details/${userlogin.userId}`} class="btn btn-danger">Cancel</Link>:
-    <Link to={"/"} class="btn btn-danger">Cancel</Link>
+        userlogin.role=='admin' && <Link to={"/admindashboard"} class="btn btn-danger">Cancel</Link>
       }
+      {
+        userlogin.role=='tenant' &&
+    <Link to={"/tenantdashboard"} class="btn btn-danger">Cancel</Link>
+ }
+  {
+        userlogin.role=='landlord' &&
+    <Link to={"/landlorddashboard"} class="btn btn-danger">Cancel</Link>
+ }
     </div>
  
     </div>

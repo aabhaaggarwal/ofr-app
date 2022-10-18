@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import forgetimg from "../assets/forgetpassword.jpg";
 import { forgetPassword } from "../../service/AuthenticationService";
+import Navbar from "../headerfooter/Navbar";
+import Footer from "../headerfooter/Footer";
 
 function ForgetPassword(){
 
@@ -23,12 +25,14 @@ function ForgetPassword(){
 
         forgetPassword(payload)
         .then(resp => {
-            alert("New password set for id: " + resp.data.userId);
+            alert("New password set");
             navigate("/login");
         });
     }
 
 return(
+    <div>
+        <Navbar/><br/><br/><br/>
     <div class="container">
         {
     <div class="row">
@@ -36,7 +40,7 @@ return(
             <img src={forgetimg} class="d-block w-100"/>
         </div>
         <div class="col-md-6 shadow-lg" style={{backgroundColor :"rgba(245, 245, 245)"}}>
-            <h2 class="text-center">Logo</h2><br/>
+            <h2 class="text-center"><i class="fa fa-home" aria-hidden="true"></i>Flat365</h2><br/>
             <p class="text-center font-weight-bold text-black-50" style={{fontSize:"x-large"}}>
                 Forgot Your Password?</p>
                 <p> Get new password in two easy steps:</p>
@@ -57,10 +61,10 @@ return(
             </div>
         
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Enter your email" id="fPassword" name="fPassword" value={fPassword} onChange={(event) => setFPassword(event.target.value)} required/>
+                <input type="password" class="form-control" placeholder="Enter new password" id="fPassword" name="fPassword" value={fPassword} onChange={(event) => setFPassword(event.target.value)} required/>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Enter your email" id="fCPassword" name="fCPassword" value={fCPassword} onChange={(event) => setFCPassword(event.target.value)} required/>
+                <input type="password" class="form-control" placeholder="Confirm new password" id="fCPassword" name="fCPassword" value={fCPassword} onChange={(event) => setFCPassword(event.target.value)} required/>
             </div>
                 <div class="form-group">
                     <button type="button" class="btn btn-dark btn-block" onClick={handleSubmit}>Reset Password</button>
@@ -70,6 +74,8 @@ return(
         </div>
     </div>
 }
+</div>
+<Footer/>
 </div>
 )    
 }

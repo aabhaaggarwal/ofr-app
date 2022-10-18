@@ -24,7 +24,7 @@ function ViewAllByTenant() {
 </div> 
  
 {  
-        
+   flatBookings.length>0 &&     
 <table class="table table-striped table-light shadow-lg">
   <thead class="thead-dark">
     <tr>
@@ -53,6 +53,14 @@ function ViewAllByTenant() {
 }
   </tbody>
 </table>
+}
+{
+  flatBookings.length==0 &&
+  <div class="card">
+  <div class="card-body">
+    Not Booked any flat
+  </div>
+</div>
 }
 </div>
 </div>

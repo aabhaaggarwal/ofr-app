@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "../headerfooter/Footer";
 import NavbarTenant from "../headerfooter/NavbarTenant";
 
 function Tenant() {
-
+    const user = JSON.parse(localStorage.getItem("loginuser"));
     return (
         <div>
-            <NavbarTenant />
+            <NavbarTenant /><br/><br/>
             <div className="container-fluid">
                 <section>
                     <div class="row" style={{ backgroundColor: "rgb(255, 179, 0)" }}>
@@ -15,20 +16,20 @@ function Tenant() {
                                 <i class="fa-solid fa-calendar-days fa-5x"></i>
 
                             </p>
-                            <h2 class="text-center font-weight-bold"> My Booking</h2>
+                            <Link to={`/flatbooking/tenant/${user.userId}`} class="text-center h2 text-dark font-weight-bold"> My Booking</Link>
                         </div>
                         <div class="col-4 mt-5 mb-5">
                             <p class="text-center">
                                 <i class="fa-solid fa-magnifying-glass fa-5x"></i>
                             </p>
-                            <h2 class="text-center font-weight-bold">Search Flat </h2>
+                            <Link  to={"/flat/all"} class="text-center h2 text-dark font-weight-bold">Search Flat </Link>
 
                         </div>
                         <div class="col-4 mt-5 mb-5">
                             <p class="text-center">
-                                <i class="fa-solid fa-file-circle-question fa-5x"></i>
+                            <i class="fa-solid fa-user-tie fa-5x"></i>
                             </p>
-                            <h2 class="text-center font-weight-bold"> My Requests</h2>
+                            <Link to={`/tenant/details/${user.userId}`} class="text-center h2 text-dark font-weight-bold"> My Profile</Link>
 
                         </div><br></br><br></br><br></br>
 
@@ -68,7 +69,7 @@ function Tenant() {
                         </div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-warning">Search Your Flat</button>
+                        <Link to={"/flat/all"} class="btn btn-warning">Search Your Flat</Link>
 
                     </div><br></br>
 

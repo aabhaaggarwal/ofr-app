@@ -48,7 +48,7 @@ function UpdateTenant() {
         }
         updateTenant(payload)
             .then(resp => {
-                alert("Tenant Updated with id "+id);
+                alert("Profile details updated");
                 navigate("/tenant/details/"+id);
             }) .catch(error=> alert(error.response.data));
     }

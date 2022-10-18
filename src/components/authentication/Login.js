@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../service/AuthenticationService';
 import login from '../assets/login.jpg';
+import Footer from '../headerfooter/Footer';
 import Navbar from '../headerfooter/Navbar';
 function Login() {
 
@@ -25,13 +26,13 @@ function Login() {
                 // alert("New Customer");
                 localStorage.setItem('loginuser', JSON.stringify(resp.data));
                 if (payload.role == 'landlord') {
-                    navigate('/');
+                    navigate('/landlorddashboard');
                 }
                 if (payload.role == 'tenant') {
-                    navigate('/');
+                    navigate('/tenantdashboard');
                 }
                 if (payload.role == 'admin') {
-                    navigate('/admin/details/'+resp.data.userId);
+                    navigate('/admindashboard');
                 }
             })
             .catch(error => {
@@ -89,6 +90,7 @@ function Login() {
                 </div>
                 </div>
                 </div>
+                <Footer/>
                 </div>
                 )
             }

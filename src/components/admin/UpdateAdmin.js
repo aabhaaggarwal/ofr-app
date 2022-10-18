@@ -44,7 +44,7 @@ function UpdateAdmin() {
         }
         updateAdmin(payload)
             .then(resp => {
-                alert("Admin Updated with id " + id);
+                alert("Profile details updated");
                 navigate("/admin/details/"+id);
             }).catch(error=> alert(error.response.data));
     }
