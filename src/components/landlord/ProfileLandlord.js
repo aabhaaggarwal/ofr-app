@@ -4,6 +4,7 @@ import { Link, useParams, userParams } from 'react-router-dom';
 import proimg from '../assets/profileimage.gif';
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
 import { viewLandlordById } from "../../service/LandlordService";
+import Footer from "../headerfooter/Footer";
 
 function FetchLandlord() {
 
@@ -109,6 +110,9 @@ function FetchLandlord() {
                     </div>
                 </div>
             }
+        </div>
+        <div>
+            <Footer/>
         </div>
 </div>
     )

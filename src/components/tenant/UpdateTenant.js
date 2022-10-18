@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import updatepic from '../assets/upgrade.jpg';
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
 import { updateTenant, viewTenantById } from "../../service/TenantService";
+import Footer from "../headerfooter/Footer";
 
 function UpdateTenant() {
     const [tId, setTId] = useState('');
@@ -49,7 +50,7 @@ function UpdateTenant() {
             .then(resp => {
                 alert("Tenant Updated with id "+id);
                 navigate("/tenant/details/"+id);
-            });
+            }) .catch(error=> alert(error.response.data));
     }
 
     return (
@@ -77,13 +78,13 @@ function UpdateTenant() {
                             <div className="row">
                                 <div class="col">
 
-                                    <input type="text" className="form-control" name="tFirstName" id="tFirstName" placeholder="Enter your first name"
+                                    <input type="text" className="form-control" name="tFirstName" id="tFirstName" pattern="[A-Za-z]" placeholder="Enter your first name"
                                         onChange={(event) => setTFirstName(event.target.value)} value={tFirstName} />
 
                                 </div>
                                 <div class="col">
 
-                                    <input type="text" className="form-control" name="tLastName" id="tLastName" placeholder="Enter your last name"
+                                    <input type="text" className="form-control" name="tLastName" id="tLastName" pattern="[A-Za-z]" placeholder="Enter your last name"
                                         onChange={(event) => setTLastName(event.target.value)} value={tLastName} />
 
                                 </div>
@@ -91,14 +92,14 @@ function UpdateTenant() {
                         </div>
                         <div class="form-group">
 
-                            <input type="text" className="form-control" name="tEmail" id="tEmail" placeholder="Enter your email"
+                            <input type="text" className="form-control" name="tEmail" id="tEmail" placeholder="Enter your email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                 onChange={(event) => setTEmail(event.target.value)} value={tEmail} />
 
                         </div>
                         <div class="row form-group">
                             <div class="col">
 
-                                <input type="number" className="form-control" name="tAge" id="tAge" placeholder="Enter your age"
+                                <input type="number" className="form-control" name="tAge" id="tAge" placeholder="Enter your age" min="18"
                                     onChange={(event) => setTAge(event.target.value)} value={tAge} />
 
                             </div>
@@ -115,14 +116,14 @@ function UpdateTenant() {
                         </div>
                         <div class="form-group">
 
-                            <input type="tel" className="form-control" name="tMobile" id="tMobile" placeholder="Enter phone number"
+                            <input type="tel" className="form-control" name="tMobile" id="tMobile"  pattern="[789][0-9]{9}" placeholder="Enter phone number"
                                 onChange={(event) => setTMobile(event.target.value)} value={tMobile} />
 
                         </div>
                         <div class="row form-group">
                             <div class="col">
 
-                                <input type="password" className="form-control" name="tPassword" id="tPassword" placeholder="Create password"
+                                <input type="password" className="form-control" name="tPassword" id="tPassword" pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" placeholder="Create password"
                                     onChange={(event) => setTPassword(event.target.value)} value={tPassword} />
 
                             </div>
@@ -133,6 +134,9 @@ function UpdateTenant() {
                     
                 </div>
             </div>
+        </div>
+        <div>
+            <Footer/>
         </div>
         </div>
     )

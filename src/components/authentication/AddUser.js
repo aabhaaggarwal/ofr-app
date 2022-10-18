@@ -75,14 +75,14 @@ function AddUser() {
                     .then(resp => {
                         alert("New landlord added with id: " + resp.data.userId);
                         navigate("/landlord/all");
-                    });
+                    }).catch(error=> alert(error.response.data));
             }
             if (lRole == 'tenant') {
                 addTenant(payload)
                     .then(resp => {
                         alert("New tenant added with id: " + resp.data.userId);
                         navigate("/tenant/all");
-                    });
+                    }).catch(error=> alert(error.response.data));
             }
         }
 
@@ -163,7 +163,7 @@ function AddUser() {
                         </div>
                         <div class="form-group">
 
-                            <input type="text" className="form-control" name="lEmail" id="lEmail" placeholder="Enter your email"
+                            <input type="text" className="form-control" name="lEmail" id="lEmail" placeholder="Enter your email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                 onChange={(event) => setLEmail(event.target.value)} value={lEmail} />
                             {
                                 formErrors.lEmailError && <div style={{ color: "red" }}>{formErrors.lEmailError}</div>
@@ -172,7 +172,7 @@ function AddUser() {
                         <div class="row form-group">
                             <div class="col">
 
-                                <input type="number" className="form-control" name="lAge" id="lAge" placeholder="Enter your age"
+                                <input type="number" className="form-control" name="lAge" id="lAge"  min="18" placeholder="Enter your age"
                                     onChange={(event) => setLAge(event.target.value)} value={lAge} />
                                 {
                                     formErrors.lAgeError && <div style={{ color: "red" }}>{formErrors.lAgeError}</div>
@@ -194,7 +194,7 @@ function AddUser() {
                         </div>
                         <div class="form-group">
 
-                            <input type="tel" className="form-control" name="lMobile" id="lMobile" placeholder="Enter phone number"
+                            <input type="tel" className="form-control" name="lMobile" pattern="[789][0-9]{9}" id="lMobile" placeholder="Enter phone number"
                                 onChange={(event) => setLMobile(event.target.value)} value={lMobile} />
                             {
                                 formErrors.lMobileError && <div style={{ color: "red" }}>{formErrors.lMobileError}</div>
@@ -203,7 +203,7 @@ function AddUser() {
                         <div class="row form-group">
                             <div class="col">
 
-                                <input type="password" className="form-control" name="lPassword" id="lPassword" placeholder="Create password"
+                                <input type="password" className="form-control" name="lPassword" id="lPassword" pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" placeholder="Create password"
                                     onChange={(event) => setLPassword(event.target.value)} value={lPassword} />
                                 {
                                     formErrors.lPasswordError && <div style={{ color: "red" }}>{formErrors.lPasswordError}</div>
