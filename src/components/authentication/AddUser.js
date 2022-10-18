@@ -145,7 +145,7 @@ function AddUser() {
                             <div className="row">
                                 <div class="col">
 
-                                    <input type="text" className="form-control" name="lFirstName" id="lFirstName" placeholder="Enter your first name"
+                                    <input type="text" className="form-control" name="lFirstName" pattern="[A-Za-z]" id="lFirstName" placeholder="Enter your first name"
                                         onChange={(event) => setLFirstName(event.target.value)} value={lFirstName} />
                                     {
                                         formErrors.lFirstNameError && <div style={{ color: "red" }}>{formErrors.lFirstNameError}</div>
@@ -153,7 +153,7 @@ function AddUser() {
                                 </div>
                                 <div class="col">
 
-                                    <input type="text" className="form-control" name="lLastName" id="lLastName" placeholder="Enter your last name"
+                                    <input type="text" className="form-control" name="lLastName" pattern="[A-Za-z]" id="lLastName" placeholder="Enter your last name"
                                         onChange={(event) => setLLastName(event.target.value)} value={lLastName} />
                                     {
                                         formErrors.lLastNameError && <div style={{ color: "red" }}>{formErrors.lLastNameError}</div>
