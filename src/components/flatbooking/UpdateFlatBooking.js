@@ -101,10 +101,11 @@ function UpdateFlatBooking() {
                 <div class="col">
                   <Link to="/flatbooking/all" type="button" class="btn btn-danger">Cancel</Link>
                 </div>
-                {
+                
+              </div>
+              {
                   formErrors.nullError && <div style={{ color: "red" }}>{formErrors.nullError}</div>
                 }
-              </div>
             </div>
           </div>
         </div>
