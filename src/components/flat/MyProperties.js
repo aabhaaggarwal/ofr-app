@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
 import { myProperties } from '../../service/FlatService';
+import Footer from '../headerfooter/Footer';
 
 
 
@@ -62,6 +63,9 @@ function MyProperties() {
         </table>}
 
     </div>
+    <div>
+                <Footer/>
+            </div>
 </div>
   )
 

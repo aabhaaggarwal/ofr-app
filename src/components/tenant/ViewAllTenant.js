@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
 import { viewAllTenant } from '../../service/TenantService';
+import Footer from '../headerfooter/Footer';
 // viewalltenant
 function ViewAllTenant() {
 
@@ -55,6 +56,9 @@ function ViewAllTenant() {
                 }
     
             </div>
+            </div>
+            <div>
+                <Footer/>
             </div>
             </div>
         )

@@ -4,6 +4,7 @@ import axios from "axios";
 import flatimg from "../assets/card222.jpg";
 import NavbarTenant from "../headerfooter/NavbarTenant";
 import { flatSearch } from "../../service/FlatService";
+import Footer from "../headerfooter/Footer";
 
 
 function ViewAllFlats() {
@@ -87,6 +88,9 @@ function ViewAllFlats() {
                 </main>
             }
         </div>
+        <div>
+                <Footer/>
+            </div>
         </div>
     )
 

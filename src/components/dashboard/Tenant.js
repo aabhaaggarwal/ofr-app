@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../headerfooter/Footer";
 import NavbarTenant from "../headerfooter/NavbarTenant";
 
 function Tenant() {
@@ -8,10 +9,6 @@ function Tenant() {
             <NavbarTenant />
             <div className="container-fluid">
                 <section>
-                    <div>
-
-                        <h1 class="text-center">Welcome to Flat365</h1><br></br><br></br>
-                    </div>
                     <div class="row" style={{ backgroundColor: "rgb(255, 179, 0)" }}>
                         <div class="col-4 mt-5 mb-5">
                             <p class="text-center">
@@ -81,6 +78,7 @@ function Tenant() {
                 </section>
 
             </div>
+            <Footer/>
 
         </div>
     )

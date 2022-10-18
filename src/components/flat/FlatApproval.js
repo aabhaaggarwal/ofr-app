@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
 import { viewAllApproval } from '../../service/FlatService';
+import Footer from '../headerfooter/Footer';
 
 
 
@@ -65,6 +66,9 @@ function FlatApproval() {
 
     </div>
     </div>
+    <div>
+                <Footer/>
+            </div>
     </div>
 
   )

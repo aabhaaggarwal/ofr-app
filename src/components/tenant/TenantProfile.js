@@ -4,6 +4,7 @@ import { Link, useParams, userParams } from "react-router-dom";
 import proimg from "../assets/profile.png";
 import NavbarTenant from "../headerfooter/NavbarTenant";
 import { viewTenantById } from "../../service/TenantService";
+import Footer from "../headerfooter/Footer";
 //TenantProfile
 function TenantProfile() {
   const [tenant, setTenant] = useState(null);
@@ -112,6 +113,9 @@ function TenantProfile() {
             </div>
           </div>
         )}
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

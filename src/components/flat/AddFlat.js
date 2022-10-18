@@ -4,6 +4,7 @@ import addflatimg from '../assets/flat.jpg';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
 import { useNavigate } from 'react-router-dom';
 import { addFlat } from '../../service/FlatService';
+import Footer from '../headerfooter/Footer';
 
 function AddFlat() {
     const [fCost, setFCost] = useState('');
@@ -86,7 +87,7 @@ function AddFlat() {
                   
                     navigate("/myproperties/"+resp.data.landlord.userId);
                     
-                });
+                }).catch(errors=>alert(errors.response.data));
         }
     }
     return (
@@ -104,7 +105,7 @@ function AddFlat() {
 
             <div className="form-group">
                 <label htmlFor='fCost'>Cost</label>
-                <input type="text" className="form-control" name="fCost" id="fCost" placeholder="Enter Flat Cost"
+                <input type="text" className="form-control" name="fCost" id="fCost" placeholder="Enter Flat Cost" pattern='/^\d+$/'
                     onChange={(event) => setFCost(event.target.value)} value={fCost} />
                 {
                     formErrors.fCostError && <div style={{ color: "red" }}>{formErrors.fCostError}</div>
@@ -232,7 +233,13 @@ function AddFlat() {
             </div>
         </div>
         </div>
-        </div></div></div>
+        </div></div>
+        
+        
+        <div>
+                <Footer/>
+            </div>
+        </div>
     )
 }
 export default AddFlat;

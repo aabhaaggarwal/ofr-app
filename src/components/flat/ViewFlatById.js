@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import flatimg  from '../assets/15400_Apartments_for_rent_in_Dubai_Marina_20151215122124.jpg';
 import NavbarTenant from '../headerfooter/NavbarTenant';
 import { viewFlatById } from '../../service/FlatService';
+import Footer from '../headerfooter/Footer';
 
 function ViewFlatById() {
     const [flat, setFlat] = useState(null);
@@ -67,6 +68,9 @@ function ViewFlatById() {
             }
 
         </div>
+        <div>
+                <Footer/>
+            </div>
         </div>
 
     )

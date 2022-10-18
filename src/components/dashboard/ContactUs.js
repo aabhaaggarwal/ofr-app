@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../headerfooter/Footer';
 import Navbar from '../headerfooter/Navbar';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
 import NavbarTenant from '../headerfooter/NavbarTenant';
@@ -66,6 +67,7 @@ function ContactUs() {
           </div>
     </div></div>
     </div></div>
+    <Footer/>
    </div>
    
     )

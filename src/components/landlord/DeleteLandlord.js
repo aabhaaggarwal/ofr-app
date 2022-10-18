@@ -4,6 +4,7 @@ import axios from 'axios';
 import dlt from '../assets/delete.gif';
 import NavbarAdmin from "../headerfooter/NavbarAdmin";
 import { deleteLandlord, viewLandlordById } from "../../service/LandlordService";
+import Footer from "../headerfooter/Footer";
 
 function DeleteLandlord() {
     const [landlord, setLandlord] = useState(null);
@@ -136,6 +137,9 @@ function DeleteLandlord() {
                 </div>
             </div>
         </div>
+        </div>
+        <div>
+            <Footer/>
         </div>
         </div>
     )

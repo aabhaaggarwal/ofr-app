@@ -46,7 +46,7 @@ function UpdateAdmin() {
             .then(resp => {
                 alert("Admin Updated with id " + id);
                 navigate("/admin/details/"+id);
-            });
+            }).catch(error=> alert(error.response.data));
     }
 
     return (
@@ -90,20 +90,20 @@ function UpdateAdmin() {
                     <div class="form-group">
 
                         <input type="text" className="form-control" name="lEmail" id="lEmail" placeholder="Enter your email"
-                            onChange={(event) => setAEmail(event.target.value)} value={aEmail} />
+                            onChange={(event) => setAEmail(event.target.value)} value={aEmail} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
 
                     </div>
                     <div class="form-group">
 
                         <input type="tel" className="form-control" name="lMobile" id="lMobile" placeholder="Enter phone number"
-                            onChange={(event) => setAMobile(event.target.value)} value={aMobile} />
+                            onChange={(event) => setAMobile(event.target.value)} value={aMobile} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
 
                     </div>
                     <div class="row form-group">
                         <div class="col">
 
                             <input type="password" className="form-control" name="lPassword" id="lPassword" placeholder="Create password"
-                                onChange={(event) => setAPassword(event.target.value)} value={aPassword} />
+                                onChange={(event) => setAPassword(event.target.value)} value={aPassword} pattern="[A-Za-z]{3}" />
 
                         </div>
                     </div>

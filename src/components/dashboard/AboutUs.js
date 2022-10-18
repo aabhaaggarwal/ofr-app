@@ -1,5 +1,6 @@
 import React from 'react';
 import aboutimg from '../assets/aboutus.jpg';
+import Footer from '../headerfooter/Footer';
 import Navbar from '../headerfooter/Navbar';
 import NavbarLandlord from '../headerfooter/NavbarLandlord';
 import NavbarTenant from '../headerfooter/NavbarTenant';
@@ -46,6 +47,9 @@ function AboutUs() {
                         effectively and inexpensively.</p>
                 </div>
                 </div>
+        </div>
+        <div>
+            <Footer/>
         </div>
         </div>
     )

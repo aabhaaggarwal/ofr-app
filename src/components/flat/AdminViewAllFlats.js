@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import NavbarAdmin from '../headerfooter/NavbarAdmin';
 import { viewAllFlats } from '../../service/FlatService';
+import Footer from '../headerfooter/Footer';
 
 
 
@@ -67,6 +68,11 @@ function AdminViewAllFlats() {
         </table>}
 </div>
     </div>
+    <div>
+            
+                <Footer/>
+            
+            </div>
 </div>
   )
 

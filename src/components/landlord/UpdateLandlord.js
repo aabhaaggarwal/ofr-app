@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import update from '../assets/upgrade.jpg';
 import NavbarLandlord from "../headerfooter/NavbarLandlord";
 import { updateLandlord, viewLandlordById } from "../../service/LandlordService";
+import Footer from "../headerfooter/Footer";
 
 function UpdateLandlord() {
     const [lId, setLId] = useState('');
@@ -52,7 +53,7 @@ function UpdateLandlord() {
             .then(resp => {
                 alert("Landlord Updated with id "+id);
                 navigate("/landlord/details/"+id);
-            });
+            }).catch(error=> alert(error.response.data));
     }
 
     return (
@@ -80,13 +81,13 @@ function UpdateLandlord() {
                             <div className="row">
                                 <div class="col">
 
-                                    <input type="text" className="form-control" name="lFirstName" id="lFirstName" placeholder="Enter your first name"
+                                    <input type="text" className="form-control" name="lFirstName" id="lFirstName" pattern="[A-Za-z]" placeholder="Enter your first name"
                                         onChange={(event) => setLFirstName(event.target.value)} value={lFirstName} />
 
                                 </div>
                                 <div class="col">
 
-                                    <input type="text" className="form-control" name="lLastName" id="lLastName" placeholder="Enter your last name"
+                                    <input type="text" className="form-control" name="lLastName" id="lLastName" pattern="[A-Za-z]" placeholder="Enter your last name"
                                         onChange={(event) => setLLastName(event.target.value)} value={lLastName} />
 
                                 </div>
@@ -94,14 +95,14 @@ function UpdateLandlord() {
                         </div>
                         <div class="form-group">
 
-                            <input type="text" className="form-control" name="lEmail" id="lEmail" placeholder="Enter your email"
+                            <input type="text" className="form-control" name="lEmail" id="lEmail"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter your email"
                                 onChange={(event) => setLEmail(event.target.value)} value={lEmail} />
 
                         </div>
                         <div class="row form-group">
                             <div class="col">
 
-                                <input type="number" className="form-control" name="lAge" id="lAge" placeholder="Enter your age"
+                                <input type="number" className="form-control" name="lAge" min = "18" id="lAge" placeholder="Enter your age"
                                     onChange={(event) => setLAge(event.target.value)} value={lAge} />
 
                             </div>
@@ -118,14 +119,14 @@ function UpdateLandlord() {
                         </div>
                         <div class="form-group">
 
-                            <input type="tel" className="form-control" name="lMobile" id="lMobile" placeholder="Enter phone number"
+                            <input type="tel" className="form-control" name="lMobile" id="lMobile" pattern="[789][0-9]{9}" placeholder="Enter phone number"
                                 onChange={(event) => setLMobile(event.target.value)} value={lMobile} />
 
                         </div>
                         <div class="row form-group">
                             <div class="col">
 
-                                <input type="password" className="form-control" name="lPassword" id="lPassword" placeholder="Create password"
+                                <input type="password" className="form-control" name="lPassword" pattern="/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g" id="lPassword" placeholder="Create password"
                                     onChange={(event) => setLPassword(event.target.value)} value={lPassword} />
 
                             </div>
@@ -145,6 +146,9 @@ function UpdateLandlord() {
                     
                 </div>
             </div>
+        </div>
+        <div>
+            <Footer/>
         </div>
 </div>
     )

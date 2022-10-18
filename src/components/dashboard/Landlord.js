@@ -1,4 +1,6 @@
 import React from "react";
+import Footer from "../headerfooter/Footer";
+import NavbarLandlord from "../headerfooter/NavbarLandlord";
 
 function Landlord() {
 
@@ -6,11 +8,11 @@ function Landlord() {
         <div>
 
             <div className="container-fluid">
+                <div>
+                    <NavbarLandlord/>
+                </div>
                 <section>
-                    <div>
-
-                        <h1 class="text-center">Welcome to Flat365</h1><br></br><br></br>
-                    </div>
+                    
                     <div class="row" style={{ backgroundColor: "rgb(255, 179, 0)" }}>
                         <div class="col-4 mt-5 mb-5">
                             <p class="text-center">
@@ -79,6 +81,9 @@ function Landlord() {
 
                 </section>
 
+            </div>
+            <div>
+                <Footer/>
             </div>
 
         </div>
