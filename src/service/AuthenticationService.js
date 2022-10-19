@@ -22,7 +22,7 @@ export const validEmail = new RegExp(
 );
 
 export const validName = new RegExp(
-    " /^[A-Za-z]+$/"
+    "[a-zA-Z]+"
 );
 
 export const validPassword = new RegExp(
